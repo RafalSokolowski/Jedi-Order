@@ -1,1 +1,5 @@
-https://www.pngguru.com/free-transparent-background-png-clipart-rbkna
+IMAGES:
+ - https://www.pngguru.com/free-transparent-background-png-clipart-rbkna
+
+SOUNDS:
+ - https://www.soundboard.com/sb/starwars
