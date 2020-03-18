@@ -8,6 +8,6 @@ public class JediOrderController {
 
     @GetMapping("/")
     public String home () {
-        return "JediOrderView";
+        return "JediOrderWelcomePage";
     }
 }

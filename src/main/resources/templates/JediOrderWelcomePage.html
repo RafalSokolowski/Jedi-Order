@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<!--<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Best Jedi Order :)</title>
+
+    <!-- it allows me to center the image :) -->
+    <style>
+        img {
+            display: block;
+            margin-top: 50px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_image_shake*/
+        /*START*/
+        img:hover {
+            animation: shake 0.5s;
+            animation-iteration-count: infinite;
+            /*background: url("static/images/Yoda3.png");*/
+
+
+        }
+        @keyframes
+        shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+        /*END*/
+
+    </style>
+
+    <!-- it allows me to add icon (favicon) to the web-tab -->
+    <link rel="icon" type="image/png" href="/images/favicon2.png" sizes="32x32">
+
+</head>
+
+
+<body onload="playBackgroundMusic()">
+
+<script>
+
+    // function sound(src) {
+    //     // this.sound = document.getElementById("audio");
+    //     this.sound = document.createElement("audio");
+    //     this.sound.src = src;
+    //     this.sound.setAttribute("preload", "auto");
+    //     this.sound.setAttribute("controls", "none");
+    //     // this.sound.setAttribute("loop", "true");
+    //     // this.sound.setAttribute("currentTime","7");
+    //     this.sound.currentTime = 7;
+    //     // this.sound.loop = true;
+    //     // this.sound.buffered.start(7);
+    //     // this.sound.buffered.end(43);
+    //     // this.sound.style.display = "none";
+    //     // document.body.appendChild(this.sound);
+    //     this.play = function () { this.sound.play(); }
+    //     this.stop = function () { this.sound.pause(); }
+    // }
+    //
+    // function playBackgroundMusic() { new sound("/sounds/Star_Wars_Theme.mp3").play(); }
+
+    <!-- it allows me to play background music... struggling to play only a part of the song:) -->
+    function playBackgroundMusic() {
+        var backgroundAudio = document.createElement("audio");
+        backgroundAudio.src = '/sounds/Star_Wars_Theme.mp3';
+        backgroundAudio.preload = "auto";
+        backgroundAudio.loop = true;
+        // backgroundAudio.currentTime = 15;
+        backgroundAudio.play();
+    }
+
+</script>
+
+
+<img th:src="@{/images/May_The_Force_Be_With_You.png}" alt="May The Force Be With You" style="width: 50%"
+     onmouseover ="this.setAttribute('src', '/images/Yoda3.png')"
+     onmouseout  ="this.setAttribute('src', '/images/May_The_Force_Be_With_You.png')"/>
+
+
+<!-- Side by Side-->
+<!--<div class="row">-->
+<!--    <div class="column">-->
+<!--        <img th:src="@{/images/May_The_Force_Be_With_You.png}" alt="May The Force Be With You" style="width: 100%"/>-->
+<!--    </div>-->
+<!--    <div class="column">-->
+<!--        <img th:src="@{/images/Yoda3.png}" alt="May The Force Be With You" style="width: 100%"/>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+</body>
+
+</html>
