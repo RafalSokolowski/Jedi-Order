@@ -11,8 +11,6 @@ public class JediOrderApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(JediOrderApplication.class, args);
-        log.info("test:)");
-        log.error("test error");
 
     }
 
