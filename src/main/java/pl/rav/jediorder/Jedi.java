@@ -27,5 +27,4 @@ public class Jedi {
     @NotEmpty(message = "there needs to be any appearance:)")
     private String appearance;
 
-
 }

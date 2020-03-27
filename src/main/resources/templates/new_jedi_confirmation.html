@@ -17,15 +17,18 @@
     }
 </script>
 
-<!--<body>-->
-<body onload="playBackgroundMusic()">
+<body>
+<!--<body onload="playBackgroundMusic()">-->
 
 <form method="POST" th:action="@{/new_jedi_on_the_board}" th:object="${new_jedi_confirmation}">
     <h1 align="center">AWESOME !!!</h1>
     <h2 align="center">Your brand new Jedi has been just baked :)</h2>
 
-    <img th:src="@{/images/warriors/Yoda.png}"alt="warrior image"
-         style="width: 30%; height: 30%; display: block; margin-left: auto; margin-right: auto"/>
+    <!-- <img th:attr="src=@{'/images/warriors/' + ${jediAppearance.id} + '.png'}" style="height: 100px; width: auto">-->
+
+    <!--    <img th:src="@{'/images/warriors/' + ${cook_your_own_jedi.appearance} + '.png'}" alt="warrior image"-->
+    <!--         style="width: 30%; height: 30%; display: block; margin-left: auto; margin-right: auto"/>-->
+
 
     <!--    <div th:if="${#fields.hasErrors()}">-->
     <!--        <span class="validationError">There is/are an/some error(s)... correct it/them</span>-->
@@ -35,17 +38,18 @@
 
     <div align="center">
         <h3>Here summary of baked Jedi:</h3>
+        <h4>th:text=${cook_your_own_jedi}</h4>
         <h4>............</h4>
         <h4>............</h4>
         <h4>............</h4>
-        <h4>............</h4>
-
     </div>
 
-    <a style="align-self: end" th:href="@{/cook_your_own_jedi}" id="anotherJedi">Personalize next Jedi warrior</a><br/>
+<!--    <div>-->
+<!--        <span th:object="${cook_your_own_jedi}" th:text=""></span>-->
+<!--    </div>-->
 
-
-
+<!--    <a style="align-self: end" th:href="@{/cook_your_own_jedi}" id="anotherJedi">Personalize next Jedi warrior</a><br/>-->
+    <a style="align-self: end" th:href="@{/cook_your_own_jedi}" id="anotherJedi" target="_blank" title="create new Jedi">Personalize next Jedi warrior</a><br/>
 
 
 </form>

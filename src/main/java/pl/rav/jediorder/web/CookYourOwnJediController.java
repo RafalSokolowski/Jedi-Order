@@ -22,27 +22,6 @@ public class CookYourOwnJediController {
     @GetMapping
     public String showParameters(Model model) {
 
-//        List<JediSet> jediSets = Arrays.asList(
-//                new JediSet("Set_Anakin_Skywalker", JediSet.Type.BLUE, 550, JediSet.Side.LIGHT),
-//                new JediSet("Set_Chewbacca",        JediSet.Type.NOP,  640, JediSet.Side.LIGHT),
-//                new JediSet("Set_Obi_Wan_Kenobi",   JediSet.Type.BLUE, 870, JediSet.Side.LIGHT),
-//                new JediSet("Set_Han_Solo",         JediSet.Type.BLUE, 640, JediSet.Side.LIGHT),
-//                new JediSet("Set_Princess_Leia",    JediSet.Type.BLUE, 340, JediSet.Side.LIGHT),
-//
-//                new JediSet("Set_Darth_Maul",       JediSet.Type.RED, 620, JediSet.Side.DARK),
-//                new JediSet("Set_Kylo_Ren",         JediSet.Type.RED, 570, JediSet.Side.DARK),
-//                new JediSet("Set_Lord_Vader",       JediSet.Type.RED, 890, JediSet.Side.DARK),
-//                new JediSet("Set_Sheev_Palpatine",  JediSet.Type.NOP, 720, JediSet.Side.DARK),
-//                new JediSet("Set_Leader_Snoke",     JediSet.Type.RED, 820, JediSet.Side.DARK)
-//                );
-//
-//        JediSet.Side[] sides = JediSet.Side.values();
-//        for (JediSet.Side s : sides) {
-//            model.addAttribute(s.toString().toLowerCase(),filterBySide(jediSets,s));
-//        }
-//
-//        model.addAttribute("cook_your_own_jedi",new Jedi());
-
         List<JediFeature> jediFeatures = Arrays.asList(
                 new JediFeature("S01", "Dark Side", JediFeature.Feature.SIDE),
                 new JediFeature("S02", "Light Side", JediFeature.Feature.SIDE),
@@ -57,10 +36,10 @@ public class CookYourOwnJediController {
                 new JediFeature("S04", "800", JediFeature.Feature.STRENGTH),
                 new JediFeature("S05", "950", JediFeature.Feature.STRENGTH),
 
-                new JediFeature("LeaderSnoke", "Leader Snoke", JediFeature.Feature.APPEARANCE),
-                new JediFeature("LordVader", "Lord Vader", JediFeature.Feature.APPEARANCE),
-                new JediFeature("SheevPalpatine", "Sheev Palpatine", JediFeature.Feature.APPEARANCE),
-                new JediFeature("Yoda", "Master Yoda", JediFeature.Feature.APPEARANCE)
+                new JediFeature("LeaderSnoke01", "Leader Snoke Style", JediFeature.Feature.APPEARANCE),
+                new JediFeature("LordVader01", "Lord Vader Style", JediFeature.Feature.APPEARANCE),
+                new JediFeature("SheevPalpatine01", "Sheev Palpatine Style", JediFeature.Feature.APPEARANCE),
+                new JediFeature("MasterYoda01", "Master Yoda Style", JediFeature.Feature.APPEARANCE)
         );
 
         Arrays.stream(JediFeature.Feature.values()).forEach(f->model.addAttribute(f.toString().toLowerCase(), filterByFeature(jediFeatures,f)));
@@ -74,9 +53,6 @@ public class CookYourOwnJediController {
         return jediFeatures.stream().filter(f->f.getFeature().equals(feature)).collect(Collectors.toList());
     }
 
-//    private List<JediSet> filterBySide(List<JediSet> jediSets, JediSet.Side side) {
-//        return jediSets.stream().filter(s->s.getSide().equals(side)).collect(Collectors.toList());
-//    }
 
     @PostMapping
     public String processFreshlyBakedJedi (Jedi jedi) {

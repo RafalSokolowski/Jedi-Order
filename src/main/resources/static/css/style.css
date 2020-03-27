@@ -1,0 +1,48 @@
+body
+{
+    background-color: #c0c5ce;
+}
+
+#container
+{
+    background-color: #a7adba;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.row
+{
+    margin-left: 40px;
+    margin-right: 40px;
+    padding: 20px;
+    border-top: 2px dotted #cccccc;
+}
+
+.select
+{
+    float: left;
+    text-align: center;
+    padding: 20px;
+    /*padding-left: 20px;*/
+    /*padding-right: 20px;*/
+    width: 40%;
+    /*background-color: #65737e;*/
+}
+
+#appearance
+{
+    text-align: center;
+}
+
+.jediAppearance
+{
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    /*!*height: 100px;*!*/
+    /*width: 100px;*/
+    /*margin: 0 auto;*/
+    /*margin-right: auto;*/
+    /*margin-left: auto;*/
+}
