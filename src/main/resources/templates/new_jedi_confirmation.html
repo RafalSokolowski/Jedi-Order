@@ -17,8 +17,8 @@
     }
 </script>
 
-<body>
-<!--<body onload="playBackgroundMusic()">-->
+<!--<body>-->
+<body onload="playBackgroundMusic()">
 
 <form method="POST" th:action="@{/new_jedi_on_the_board}" th:object="${new_jedi_confirmation}">
     <h1 align="center">AWESOME !!!</h1>
@@ -38,7 +38,7 @@
 
     <div align="center">
         <h3>Here summary of baked Jedi:</h3>
-        <h4>th:text=${cook_your_own_jedi}</h4>
+        <h4>$_POST['side']</h4>
         <h4>............</h4>
         <h4>............</h4>
         <h4>............</h4>

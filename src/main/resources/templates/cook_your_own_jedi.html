@@ -5,18 +5,14 @@
 
 <head>
     <title>Jedi Panel</title>
-
     <meta charset="UTF-8"/>
     <meta name="description" content="Management panel for new Jedi creation and Jedi Order set"/>
     <meta name="keywords" content="Jedi, StarWars"/>
     <meta http-equiv="X-UA-Compatibile" content="IE=edge,chrome=1"/>
     <meta name="author" content="Rav the entry level Jedi warrior:)"/>
-    <!--    <link rel="stylesheet" type="text/css" media="all" th:href="@{templates/css/style.css}"/>-->
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}"/>
-    <!--    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}" href="/static/css/style.css"/>-->
-
-    <!--    content="width=device-width-->
 </head>
+
 
 <script>
     function playBackgroundMusic() {
@@ -28,66 +24,40 @@
 </script>
 
 
-<style>
-
-    /*body*/
-    /*{*/
-    /*    background: yellow;*/
-    /*}*/
-
-    /*.column {*/
-    /*    float: left;*/
-    /*    width: 50%;*/
-    /*    padding: 10px;*/
-    /*}*/
-    /*.firstRow:after {*/
-    /*    content: "";*/
-    /*    display: table;*/
-    /*    clear: both;*/
-    /*}*/
-
-    /*.columnAppearance {*/
-    /*    float: left;*/
-    /*    padding: 5px;*/
-    /*    align-content: center;*/
-    /*}*/
-
-    /*.rowAppearance::after {*/
-    /*    content: "";*/
-    /*    clear: both;*/
-    /*    display: table;*/
-    /*}*/
-
-</style>
-
-
 <body>
-<!--<body style="background: aqua">-->
 <!--<body onload="playBackgroundMusic()">-->
 
 
 <img th:src="@{/images/ReturnOfTheJedi.png}" alt="Jedi academy logo" id="welcomeBanner"
      style="width: 50%; height: 50%; display: block; margin-left: auto; margin-right: auto"/>
 
-<form method="POST" th:object="${cook_your_own_jedi}">
 
+<form method="POST" th:object="${cook_your_own_jedi}">
 
     <div id="container">
 
         <div class="row">
             <div class="select" id="side">
-                <h3>Power's side:</h3>
+                <h3>Power side:</h3>
                 <div th:each="jediFeature : ${side}">
                     <input name="side" type="radio" th:value="${jediFeature.id}"/>
-                    <span th:text="${jediFeature.name}">JEDI_FEATURE</span><br/>
+                    <span th:text="${jediFeature.name}">SIDE</span><br/>
+                </div>
+            </div>
+
+            <div class="select" id="order">
+                <h3>Jedi Order:</h3>
+                <div th:each="order : ${order}">
+                    <input name="order" type="radio" th:value="${order.id}"/>
+                    <span th:text="${order.name}">ORDER</span><br/>
                 </div>
             </div>
 
             <div class="select" id="lightsaber">
-                <h3>Lightsaber's color:</h3>
+                <h3>Lightsaber color:</h3>
                 <div th:each="jediLightsaber : ${lightsaber}">
                     <input name="lightsaber" type="radio" th:value="${jediLightsaber.id}"/>
-                    <span th:text="${jediLightsaber.name}">JEDI_FEATURE</span><br/>
+                    <span th:text="${jediLightsaber.name}">LIGHTSABER</span><br/>
                 </div>
             </div>
 
@@ -96,41 +66,28 @@
 
 
         <div class="row">
-
             <div class="select" id="strength">
                 <h3>Strength:</h3>
-                <div th:each="jediStrength : ${strength}">
-                    <input name="strength" type="radio" th:value="${jediStrength.id}"/>
-                    <span th:text="${jediStrength.name}">JEDI_FEATURE</span><br/>
-                </div>
+                <input name="strength" type="text" th:field="*{strength}"/>
+                <span class="errorVerification"
+                      th:if="${#fields.hasErrors('strength')}"
+                      th:errors="*{strength}">Strength needs to be greater than 1 and lower than 1 000 !</span>
             </div>
 
             <div style="clear: both"></div>
-
         </div>
 
-        <!--    <div align="center" class="thirdRow">-->
-        <!--        <div class="column" id="appearance">-->
-        <!--            <h3>Appearance:</h3>-->
-        <!--            <div th:each="jediAppearance : ${appearance}">-->
-        <!--                <input name="appearance" type="radio" th:value="${jediAppearance.id}"/>-->
-        <!--                <span th:text="${jediAppearance.id}">JEDI_FEATURE</span><br/>-->
-        <!--            </div>-->
-        <!--        </div>-->
-        <!--    </div>-->
+
 
         <div class="row">
-
             <div id="appearance">
                 <h3>Appearance:</h3>
                 <div class="jediAppearance" th:each="jediAppearance : ${appearance}">
                     <input name="appearance" type="radio" th:value="${jediAppearance.id}"/>
-                    <img th:attr="src=@{'/images/warriors/' + ${jediAppearance.id} + '.png'}"
-                         style="height: 100px; width: auto">
+                    <img th:attr="src=@{'/images/warriors/' + ${jediAppearance.id} + '.png'}" style="height: 100px; width: auto">
                 </div>
 
                 <div style="clear: both"></div>
-
             </div>
         </div>
 

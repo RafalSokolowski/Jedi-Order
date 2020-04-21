@@ -3,7 +3,6 @@ package pl.rav.jediorder;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 @Data
 public class JediFeature {
@@ -17,11 +16,7 @@ public class JediFeature {
     private final Feature feature;
 
     public enum Feature {
-        SIDE, LIGHTSABER, STRENGTH, APPEARANCE
+        SIDE, LIGHTSABER, APPEARANCE, ORDER
     }
-
-//    @Size(min = 1, max = 1000, message = "strength must be between 1 and 1000")
-//    private final int strength;
-
 
 }

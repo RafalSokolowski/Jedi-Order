@@ -1,5 +1,6 @@
 body
 {
+    font-family: Calibri, serif;
     background-color: #c0c5ce;
 }
 
@@ -13,22 +14,24 @@ body
 
 .row
 {
+    display: flex;
+    justify-content: center;
+    /*align-items: center;*/
+
     margin-left: 40px;
     margin-right: 40px;
     padding: 20px;
     border-top: 2px dotted #cccccc;
 }
-
 .select
 {
     float: left;
     text-align: center;
     padding: 20px;
-    /*padding-left: 20px;*/
-    /*padding-right: 20px;*/
-    width: 40%;
-    /*background-color: #65737e;*/
+    width: 20%;
+    /*border-style: solid;*/
 }
+
 
 #appearance
 {
