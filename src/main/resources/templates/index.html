@@ -6,6 +6,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="2; URL=/main"> <!-- automatyczne przekierowanie -->
     <title>Best Jedi Order :)</title>
 
     <!-- it allows me to center the image :) -->
@@ -24,6 +25,7 @@
             animation-iteration-count: infinite;
             /*background: url("static/images/Yoda3.png");*/
         }
+
         @keyframes
         shake {
             0% { transform: translate(1px, 1px) rotate(0deg); }
@@ -47,7 +49,7 @@
 </head>
 
 
-<body onload="playBackgroundMusic()">
+<body onload="playBackgroundMusic()" style="background-image: url('background/background07.png');">
 
 <script>
 
@@ -85,8 +87,9 @@
 
 
 <img th:src="@{/images/May_The_Force_Be_With_You.png}" alt="May The Force Be With You" style="width: 50%"
-     onmouseover ="this.setAttribute('src', '/images/Yoda3.png')"
-     onmouseout  ="this.setAttribute('src', '/images/May_The_Force_Be_With_You.png')"/>
+     onMouseOver ="this.setAttribute('src', '/images/Yoda3.png')"
+     onMouseOut  ="this.setAttribute('src', '/images/May_The_Force_Be_With_You.png')"
+     onClick     ="this.setAttribute('src', '/main.html')"/>
 
 
 <!-- Side by Side-->

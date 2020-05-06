@@ -3,3 +3,7 @@ IMAGES:
 
 SOUNDS:
  - https://www.soundboard.com/sb/starwars
+
+ FONTS:
+ - OnlineWebFonts (STARWARS Fonts) at:
+   https://www.onlinewebfonts.com/download/c00548f5d217ed324ae9096051927001

@@ -31,18 +31,32 @@
 <img th:src="@{/images/ReturnOfTheJedi.png}" alt="Jedi academy logo" id="welcomeBanner"
      style="width: 50%; height: 50%; display: block; margin-left: auto; margin-right: auto"/>
 
+<!--        <div th:text="'Test: ' + ${jedi}"></div>-->
 
-<form method="POST" th:object="${cook_your_own_jedi}">
+
+<form method="POST" th:action="@{/cook_your_own_jedi}" th:object="${jedi}">
 
     <div id="container">
 
         <div class="row">
             <div class="select" id="side">
                 <h3>Power side:</h3>
+                <!--                <div th:each="jediFeature : ${side}">-->
+                <!--                    <input name="side" type="radio" th:field="*{side}" th:value="${jediFeature.id}"/>-->
+                <!--                    <span th:text="${jediFeature.name}">SIDE</span><br/>-->
+                <!--&lt;!&ndash;                    <span class="errorVerification" th:if="${#fields.hasErrors('side')}" th:errors="*{side}">MESSAGE</span>&ndash;&gt;-->
+                <!--                    <span class="errorVerification" th:if="${#fields.hasErrors('side')}" th:errors="*{side}">MESSAGE</span>-->
+                <!--                </div>-->
+
+
                 <div th:each="jediFeature : ${side}">
                     <input name="side" type="radio" th:value="${jediFeature.id}"/>
                     <span th:text="${jediFeature.name}">SIDE</span><br/>
+                    <!--                    <span class="errorVerification" th:if="${#fields.hasErrors('side')}" th:errors="*{side}">MESSAGE</span>-->
+                    <!--                    <span class="errorVerification" th:if="${#fields.hasErrors('side')}" th:errors="TEST">MESSAGE</span>-->
                 </div>
+
+
             </div>
 
             <div class="select" id="order">
@@ -69,27 +83,28 @@
             <div class="select" id="strength">
                 <h3>Strength:</h3>
                 <input name="strength" type="text" th:field="*{strength}"/>
-                <span class="errorVerification"
-                      th:if="${#fields.hasErrors('strength')}"
-                      th:errors="*{strength}">Strength needs to be greater than 1 and lower than 1 000 !</span>
+                <br/><span class="errorVerification" th:if="${#fields.hasErrors('strength')}" th:errors="*{strength}">MESSAGE</span>
             </div>
 
             <div style="clear: both"></div>
         </div>
 
 
+        <fieldset>
+            <legend>Customized Jedi appearance</legend>
+            <div class="row">
+                <div id="appearance">
+                    <h3>Appearance:</h3>
+                    <div class="jediAppearance" th:each="jediAppearance : ${appearance}">
+                        <input name="appearance" type="radio" th:value="${jediAppearance.id}"/>
+                        <img th:attr="src=@{'/images/warriors/' + ${jediAppearance.id} + '.png'}"
+                             style="height: 100px; width: auto">
+                    </div>
 
-        <div class="row">
-            <div id="appearance">
-                <h3>Appearance:</h3>
-                <div class="jediAppearance" th:each="jediAppearance : ${appearance}">
-                    <input name="appearance" type="radio" th:value="${jediAppearance.id}"/>
-                    <img th:attr="src=@{'/images/warriors/' + ${jediAppearance.id} + '.png'}" style="height: 100px; width: auto">
+                    <div style="clear: both"></div>
                 </div>
-
-                <div style="clear: both"></div>
             </div>
-        </div>
+        </fieldset>
 
         <!-- th:value <- przekazuje do pola name="features" wartość id -->
 
@@ -98,9 +113,10 @@
                 <h4>Your own Jedi name:</h4>
                 <input type="text" th:field="*{name}">
                 <br/><br/>
-                <button>Cook your Jedi ! :)</button>
+                <button type="submit">Cook your Jedi ! :)</button>
             </div>
         </div>
+
 
     </div>
 

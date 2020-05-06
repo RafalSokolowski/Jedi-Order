@@ -3,10 +3,15 @@ package pl.rav.jediorder;
 import lombok.*;
 
 import javax.validation.constraints.*;
+import java.time.LocalDate;
 import java.util.List;
 
-@Data
+@Getter
+@ToString
 public class Jedi {
+
+    private int id;             // for databases
+    private LocalDate created;  // for databases
 
     @NotEmpty(message = "Jedi name is mandatory and cannot be empty")
     private String name;
