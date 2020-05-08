@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.rav.jediorder.Jedi;
+import pl.rav.jediorder.warrior.Warrior;
 
 @Log4j2
 @Controller
@@ -14,7 +14,7 @@ public class NewJediController {
 
     @GetMapping("confirmation")
     public String processNewJedi (Model model) {
-        model.addAttribute("New Jedi", new Jedi());
+        model.addAttribute("New Jedi", new Warrior());
         return "new_jedi_confirmation";
     }
 

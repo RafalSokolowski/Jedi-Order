@@ -6,7 +6,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="2; URL=/main"> <!-- automatyczne przekierowanie -->
+<!--    <meta http-equiv="refresh" content="2; URL=/main"> &lt;!&ndash; automatyczne przekierowanie, ilość sekunt do przekierowania: content&ndash;&gt;-->
+    <link rel="stylesheet" type="text/css" media="all" href="css/styleMain.css">
     <title>Best Jedi Order :)</title>
 
     <!-- it allows me to center the image :) -->
@@ -45,35 +46,12 @@
 
     <!-- it allows me to add icon (favicon) to the web-tab -->
     <link rel="icon" type="image/png" href="/images/favicon2.png" sizes="32x32">
-
 </head>
-
 
 <body onload="playBackgroundMusic()" style="background-image: url('background/background07.png');">
 
 <script>
-
-    // function sound(src) {
-    //     // this.sound = document.getElementById("audio");
-    //     this.sound = document.createElement("audio");
-    //     this.sound.src = src;
-    //     this.sound.setAttribute("preload", "auto");
-    //     this.sound.setAttribute("controls", "none");
-    //     // this.sound.setAttribute("loop", "true");
-    //     // this.sound.setAttribute("currentTime","7");
-    //     this.sound.currentTime = 7;
-    //     // this.sound.loop = true;
-    //     // this.sound.buffered.start(7);
-    //     // this.sound.buffered.end(43);
-    //     // this.sound.style.display = "none";
-    //     // document.body.appendChild(this.sound);
-    //     this.play = function () { this.sound.play(); }
-    //     this.stop = function () { this.sound.pause(); }
-    // }
-    //
-    // function playBackgroundMusic() { new sound("/sounds/Star_Wars_Theme.mp3").play(); }
-
-    <!-- it allows me to play background music... struggling to play only a part of the song:) -->
+    // <!-- it allows me to play background music... struggling to play only a part of the song:) -->
     function playBackgroundMusic() {
         var backgroundAudio = document.createElement("audio");
         backgroundAudio.src = '/sounds/Star_Wars_Theme.mp3';
@@ -82,8 +60,19 @@
         // backgroundAudio.currentTime = 15;
         backgroundAudio.play();
     }
-
 </script>
+
+<header class="background">
+    <ul id="menue">
+        <li><a class="current" href="/">ABOUT</a></li>
+        <li><a href="#">NEW ORDER</a></li>
+        <li><a href="#">NEW WARRIOR</a></li>
+        <li><a href="/jediOrder">JEDI ORDER</a></li>
+        <li><a href="#">JEDI WARRIORS</a></li>
+        <li><a href="/sithOrder">SITH ORDER</a></li>
+        <li><a href="#">SITH WARRIORS</a></li>
+    </ul>
+</header>
 
 
 <img th:src="@{/images/May_The_Force_Be_With_You.png}" alt="May The Force Be With You" style="width: 50%"

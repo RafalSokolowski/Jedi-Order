@@ -7,7 +7,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.rav.jediorder.Jedi;
+import pl.rav.jediorder.warrior.Warrior;
 import pl.rav.jediorder.JediFeature;
 
 import javax.validation.Valid;
@@ -45,7 +45,7 @@ public class CookYourOwnJediController {
 
         Arrays.stream(JediFeature.Feature.values()).forEach(f -> model.addAttribute(f.toString().toLowerCase(), filterByFeature(jediFeatures, f)));
 
-        model.addAttribute("jedi", new Jedi());
+        model.addAttribute("jedi", new Warrior());
 
         System.out.println();
         model.asMap().forEach((k, v) -> {
@@ -62,7 +62,7 @@ public class CookYourOwnJediController {
 
 
     @PostMapping
-    public String processFreshlyBakedJedi(@Valid Jedi jedi, Errors errors, Model model) {
+    public String processFreshlyBakedJedi(@Valid Warrior jedi, Errors errors, Model model) {
         if (errors.hasErrors()) {
             log.error("error: " + errors);
             model.addAttribute("jedi", jedi);

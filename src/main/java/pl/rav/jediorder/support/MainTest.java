@@ -1,7 +1,5 @@
 package pl.rav.jediorder.support;
 
-import pl.rav.jediorder.Jedi;
-
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Map;

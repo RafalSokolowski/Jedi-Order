@@ -16,41 +16,20 @@
 <body>
 
 <header class="background">
-    <ul id="menue">
-        <li><a href="#">ABOUT</a></li>
+    <ul id="menu">
+        <li><a href="/">ABOUT</a></li>
         <li><a href="#">NEW ORDER</a></li>
         <li><a href="#">NEW WARRIOR</a></li>
-        <li><a href="#">JEDI ORDER</a></li>
+        <li><a href="/jediOrder">JEDI ORDER</a></li>
         <li><a href="#">JEDI WARRIORS</a></li>
-        <li><a href="#">SITH ORDER</a></li>
+        <li><a class="current" href="/sithOrder">SITH ORDER</a></li>
         <li><a href="#">SITH WARRIORS</a></li>
     </ul>
-    <h3>May the knowledge be with you . . . select the character to be with the story</h3>
+    <h3>May the knowledge be with you . . . select the Sith character to be with the story</h3>
 </header>
 
 <section>
     <div class="warriors">
-
-        <div class="warrior">
-            <figure>
-                <a th:href="@{warriors/LightSide/QuiGonJinn}"><img src="/images/warriors/Light/QuiGonJinn.png"
-                                                                   alt="Qui-Gon Jinn"></a>
-                <figcaption>Qui-Gon Jinn</figcaption>
-            </figure>
-        </div>
-        <div class="warrior">
-            <figure>
-                <a href="#"><img src="/images/warriors/Light/ObiWanKenobi.png" alt="Obi-Wan Kenobi"></a>
-                <figcaption>Obi-Wan Kenobi</figcaption>
-            </figure>
-        </div>
-        <div class="warrior">
-            <figure>
-                <a href="#"><img src="/images/warriors/Light/LukeSkywalker.png" alt="Luke Skywalker"></a>
-                <figcaption>Luke Skywalker</figcaption>
-            </figure>
-        </div>
-    </div>
 
     <div class="warriors">
         <div class="warrior">

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Management panel for new Jedi creation and Jedi Order set">
+    <meta name="keywords" content="Jedi, StarWars, JediOrder">
+    <meta http-equiv="X-UA-Compatibile" content="IE=edge,chrome=1">
+    <meta name="author" content="Rav the entry level Jedi warrior:)">
+    <link rel="stylesheet" type="text/css" media="all" href="css/styleMain.css">
+    <title>Main Panel</title>
+</head>
+
+<body>
+
+<header class="background">
+    <ul id="menu">
+        <li><a href="/">ABOUT</a></li>
+        <li><a href="#">NEW ORDER</a></li>
+        <li><a href="#">NEW WARRIOR</a></li>
+        <li><a class="current" href="/jediOrder">JEDI ORDER</a></li>
+        <li><a href="#">JEDI WARRIORS</a></li>
+        <li><a href="/sithOrder">SITH ORDER</a></li>
+        <li><a href="#">SITH WARRIORS</a></li>
+    </ul>
+    <h3>May the knowledge be with you . . . select the Jedi character to be with the story</h3>
+</header>
+
+<section>
+    <div class="warriors">
+
+        <div class="warrior" th:each="warrior : ${jedi}">
+            <figure>
+                <a th:href="@{warriors/LightSide/QuiGonJinn}">
+                    <img th:src="@{'/images/warriors/'} + ${warrior.getValue().getAppearance().getDesc()}" th:alt="${warrior.getValue().getName()}">
+                </a>
+                <figcaption th:text="${warrior.getValue().getName()}">WARRIOR NAME</figcaption>
+            </figure>
+        </div>
+
+
+
+<!--        <div class="warrior">-->
+<!--            <figure>-->
+<!--                <a th:href="@{warriors/LightSide/QuiGonJinn}"><img src="/images/warriors/Light/QuiGonJinn.png"-->
+<!--                                                                   alt="Qui-Gon Jinn"></a>-->
+<!--                <figcaption>Qui-Gon Jinn</figcaption>-->
+<!--            </figure>-->
+<!--        </div>-->
+<!--        <div class="warrior">-->
+<!--            <figure>-->
+<!--                <a href="#"><img src="/images/warriors/Light/ObiWanKenobi.png" alt="Obi-Wan Kenobi"></a>-->
+<!--                <figcaption>Obi-Wan Kenobi</figcaption>-->
+<!--            </figure>-->
+<!--        </div>-->
+<!--        <div class="warrior">-->
+<!--            <figure>-->
+<!--                <a href="#"><img src="/images/warriors/Light/LukeSkywalker.png" alt="Luke Skywalker"></a>-->
+<!--                <figcaption>Luke Skywalker</figcaption>-->
+<!--            </figure>-->
+<!--        </div>-->
+
+    </div>
+
+</section>
+
+</body>
+
+</html>
