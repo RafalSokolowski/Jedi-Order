@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Yoda describtion">
+    <meta name="keywords" content="Jedi, StarWars, JediOrder">
+    <meta http-equiv="X-UA-Compatibile" content="IE=edge,chrome=1">
+    <meta name="author" content="Iwona the entry level Jedi warrior:)">
+    <link rel="stylesheet" type="text/css" media="all" href="css/styleMain.css">
+    <title>Main Panel</title>
+</head>
+
+<body>
+
+<header class="background">
+    <ul id="menu">
+        <li><a href="/">ABOUT</a></li>
+        <li><a href="#">NEW ORDER</a></li>
+        <li><a href="#">NEW WARRIOR</a></li>
+        <li><a href="/jediOrder">JEDI ORDER</a></li>
+        <li><a href="#">JEDI WARRIORS</a></li>
+        <li><a class="current" href="/sithOrder">Obi-Wan Kenobi</a></li>
+        <li><a href="#">SITH WARRIORS</a></li>
+    </ul>
+    <h3>Obi-Wan Kenobi (znany też później jako Ben Kenobi) – postać fikcyjna,
+        jeden z głównych bohaterów Gwiezdnych wojen. Rycerz, a następnie mistrz Jedi,
+        z reguły posługiwał się niebieskim mieczem świetlnym. </h3>
+</header>
+
+<section>
+    <div class="warriors">
+
+    <div class="warriors">
+        <div class="warrior">
+            <figure>
+                <a th:href="@{warriors/Obi-Wan Kenobi}"><img src="/images/warriors/obi-Wan Kenobi.png"
+                                                                 alt="Obi-Wan Kenobi"></a>
+                <figcaption>Obi-Wan Kenobi</figcaption>
+            </figure>
+        </div>
+        <div class="warrior">
+            <figure>
+                <a href="#"><img src="/images/warriors/Obi-Wan Kenobi.png" alt="Obi-Wan Kenobi"></a>
+                <figcaption>Obi-Wan Kenobi</figcaption>
+            </figure>
+        </div>
+        
+    </div>
+
+</section>
+
+</body>
+
+</html>

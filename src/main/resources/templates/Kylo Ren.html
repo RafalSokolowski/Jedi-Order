@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Yoda describtion">
+    <meta name="keywords" content="Jedi, StarWars, JediOrder">
+    <meta http-equiv="X-UA-Compatibile" content="IE=edge,chrome=1">
+    <meta name="author" content="Iwona the entry level Jedi warrior:)">
+    <link rel="stylesheet" type="text/css" media="all" href="css/styleMain.css">
+    <title>Main Panel</title>
+</head>
+
+<body>
+
+<header class="background">
+    <ul id="menu">
+        <li><a href="/">ABOUT</a></li>
+        <li><a href="#">NEW ORDER</a></li>
+        <li><a href="#">NEW WARRIOR</a></li>
+        <li><a href="/jediOrder">JEDI ORDER</a></li>
+        <li><a href="#">JEDI WARRIORS</a></li>
+        <li><a class="current" href="/sithOrder">Kylo Ren</a></li>
+        <li><a href="#">SITH WARRIORS</a></li>
+    </ul>
+    <h3>Kylo Ren urodzony jako Ben Solo — syn Hana Solo i Lei Organy, wnuk Anakina Skywalkera,
+        jeden z Rycerzy Ren, organizacji przynależącej do Najwyższego Porządku. Urodził się po
+        Bitwie o Endor ok. 5 ABY. Jako że Ben był wrażliwy na moc, jego matka wysłała go na
+        szkolenie do jego wuja, Luke'a Skywalkera.</h3>
+</header>
+
+<section>
+    <div class="warriors">
+
+    <div class="warriors">
+        <div class="warrior">
+            <figure>
+                <a th:href="@{warriors/Kylo Ren}"><img src="/images/warriors/Kylo Ren.png"
+                                                                 alt="Kylo Ren"></a>
+                <figcaption>Yoda</figcaption>
+            </figure>
+        </div>
+        <div class="warrior">
+            <figure>
+                <a href="#"><img src="/images/warriors/Kylo Ren.png" alt="Kylo Ren"></a>
+                <figcaption>Kylo Ren</figcaption>
+            </figure>
+        </div>
+
+    </div>
+
+</section>
+
+</body>
+
+</html>
