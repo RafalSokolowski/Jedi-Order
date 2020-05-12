@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 @Log4j2
 @Controller
-@RequestMapping("/cook_your_own_jedi")
+//@RequestMapping("/cook_your_own_jedi")
 public class CookYourOwnJediController {
 
     @GetMapping

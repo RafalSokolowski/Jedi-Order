@@ -1,31 +1,30 @@
 package pl.rav.jediorder.support;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class MainTest {
 
+    private static int i;
+
     public static void main(String[] args) {
 
-        LinkedList<String> test = new LinkedList<>();  // tworzę Listę
-        test.add("ABC");                               // dodaje elementy do Listy
-        test.add("CBA");
-        test.add("ACB");
+//        Runnable
 
-        Map<String, LinkedList<String>> mapka = new TreeMap<>();    // tworzę Mapę
-        mapka.put("ABC", test);                                    // dodaje element do Mapy
+//        Thread;
+//        Date;
+//        String;
+//        Integer;
 
-        mapka.put("EFG",new LinkedList<>(Arrays.asList("GFE","FGE")));  // dodam sobie 2ga aby bylo urozmaicenie :)
+        System.out.println(returnSth());
+        System.out.println(returnSth());
 
-        mapka.get("ABC").forEach(value-> System.out.print(value + ", "));          // wyswietlam sobie zawartosc List, uzywam tu forEach + lambda Java8 (aby było szybciej ale możesz zrobic to dowolnie w pętli, zresztą to jest pętla tylko jednolinijkowa :)
-        System.out.println();
-        mapka.get("EFG").forEach(value-> System.out.print(value + ", "));
-        System.out.println();
+        System.out.println(i);
 
-        mapka.get("ABC").add("BAC");// wyciągam daną listę poprzez klucz dodaje wartość i done :)
-        mapka.get("ABC").forEach(value-> System.out.print(value + ", ")); //jest dodane :)
 
+
+    }
+
+    private static int returnSth () {
+        return i++;
     }
 }

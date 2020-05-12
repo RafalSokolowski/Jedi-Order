@@ -40,5 +40,11 @@ public class JediOrderController {
         return "warriors/DarkSide/DarthMaul";
     }
 
+    @GetMapping("/newWarrior")
+    public String toNewWarrior () {
+        System.out.println("here");
+        return "newWarrior";
+    }
+
 
 }
