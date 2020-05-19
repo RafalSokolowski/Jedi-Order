@@ -32,64 +32,73 @@
         <li><a href="#">NEW ORDER</a></li>
         <li><a class="current" href="/newWarrior">NEW WARRIOR</a></li>
         <li><a href="/jediOrder">JEDI ORDER</a></li>
-        <li><a href="#">JEDI WARRIORS</a></li>
+        <!--        <li><a href="#">JEDI WARRIORS</a></li>-->
         <li><a href="/sithOrder">SITH ORDER</a></li>
-        <li><a href="#">SITH WARRIORS</a></li>
+        <!--        <li><a href="#">SITH WARRIORS</a></li>-->
     </ul>
     <h3>May the creation be with you . . . cook your own warrior :)</h3>
 </header>
 
-
-<form method="POST" th:action="@{/cook_your_own_jedi}" th:object="${jedi}">
-
+<form action="#" th:action="@{/newWarrior}" th:object="${warrior}" method="post">
     <div id="container">
 
+<!--        <div style="font-size: large" th:text="${warrior}"></div>-->
+
+        <fieldset>
+            <legend>. Origin .</legend>
+            <div class="row">
+                <div class="select">
+                    <h3>Side:</h3>
+                    <div class="box" th:each="s : ${sides}">
+                        <input name="side" type="radio" th:value="${s.name()}">
+                        <span th:text="${s.getDesc()}">SIDE</span><br/>
+                    </div>
+                </div>
+
+                <div class="select">
+                    <h3>Gender:</h3>
+                    <div class="box" th:each="gender : ${gender}">
+                        <input name="gender" type="radio" th:value="${gender}">
+                        <span th:text="${gender.getDesc()}">GENDER</span><br/>
+                    </div>
+                </div>
+
+                <div class="select">
+                    <h3>Species:</h3>
+                    <div class="box" th:each="species : ${species}">
+                        <input name="species" type="radio" th:value="${species}">
+                        <span th:text="${species.getDesc()}">SPECIES</span><br/>
+                    </div>
+                </div>
+
+                <div class="select">
+                    <h3>Home World:</h3>
+                    <div class="box" th:each="planet : ${planet}">
+                        <input name="planet" type="radio" th:value="${planet}">
+                        <span th:text="${planet.getDesc()}">PLANET</span><br/>
+                    </div>
+                </div>
+
+                <div style="clear: both"></div>
+            </div>
+        </fieldset>
+
+
         <div class="row">
-            <div class="select" id="side">
-                <h3>Power side:</h3>
-                <!--                <div th:each="jediFeature : ${side}">-->
-                <!--                    <input name="side" type="radio" th:field="*{side}" th:value="${jediFeature.id}"/>-->
-                <!--                    <span th:text="${jediFeature.name}">SIDE</span><br/>-->
-                <!--&lt;!&ndash;                    <span class="errorVerification" th:if="${#fields.hasErrors('side')}" th:errors="*{side}">MESSAGE</span>&ndash;&gt;-->
-                <!--                    <span class="errorVerification" th:if="${#fields.hasErrors('side')}" th:errors="*{side}">MESSAGE</span>-->
-                <!--                </div>-->
-
-
-                <div th:each="jediFeature : ${side}">
-                    <input name="side" type="radio" th:value="${jediFeature.id}"/>
-                    <span th:text="${jediFeature.name}">SIDE</span><br/>
-                    <!--                    <span class="errorVerification" th:if="${#fields.hasErrors('side')}" th:errors="*{side}">MESSAGE</span>-->
-                    <!--                    <span class="errorVerification" th:if="${#fields.hasErrors('side')}" th:errors="TEST">MESSAGE</span>-->
-                </div>
-
-
-            </div>
-
-            <div class="select" id="order">
-                <h3>Jedi Order:</h3>
-                <div th:each="order : ${order}">
-                    <input name="order" type="radio" th:value="${order.id}"/>
-                    <span th:text="${order.name}">ORDER</span><br/>
+            <div class="select" style="width: 40%">
+                <h3>Lightsaber:</h3>
+                <div class="box" th:each="saber : ${lightsaber}">
+                    <input name="lightsaber" type="radio" th:value="${saber}">
+                    <span th:text="${saber.getDesc()}">LIGHTSABER</span><br/>
                 </div>
             </div>
 
-            <div class="select" id="lightsaber">
-                <h3>Lightsaber color:</h3>
-                <div th:each="jediLightsaber : ${lightsaber}">
-                    <input name="lightsaber" type="radio" th:value="${jediLightsaber.id}"/>
-                    <span th:text="${jediLightsaber.name}">LIGHTSABER</span><br/>
+            <div class="select" style="width: 40%">
+                <h3>Order:</h3>
+                <div class="box" th:each="order : ${orders}">
+                    <input name="order" type="radio" th:value="${order}">
+                    <span th:text="${order.getName()}">ORDER</span><br/>
                 </div>
-            </div>
-
-            <div style="clear: both"></div>
-        </div>
-
-
-        <div class="row">
-            <div class="select" id="strength">
-                <h3>Strength:</h3>
-                <input name="strength" type="text" th:field="*{strength}"/>
-                <br/><span class="errorVerification" th:if="${#fields.hasErrors('strength')}" th:errors="*{strength}">MESSAGE</span>
             </div>
 
             <div style="clear: both"></div>
@@ -97,35 +106,60 @@
 
 
         <fieldset>
-            <legend>Customized Jedi appearance</legend>
+            <legend>. Affiliation .</legend>
             <div class="row">
-                <div id="appearance">
-                    <h3>Appearance:</h3>
-                    <div class="jediAppearance" th:each="jediAppearance : ${appearance}">
-                        <input name="appearance" type="radio" th:value="${jediAppearance.id}"/>
-                        <img th:attr="src=@{'/images/warriors/' + ${jediAppearance.id} + '.png'}"
-                             style="height: 100px; width: auto">
+                <div class="select">
+                    <h3>Grade:</h3>
+                    <div class="box" th:each="grade : ${grade}">
+                        <input name="side" type="radio" th:value="${grade}">
+                        <span th:text="${grade.getDesc()}">GRADE</span><br/>
                     </div>
-
-                    <div style="clear: both"></div>
                 </div>
+
+                <div class="select">
+                    <h3>Appearance:</h3>
+                    <div class="box" th:each="app : ${appearance}">
+                        <input name="appearance" type="radio" th:value="${appearance}">
+                        <span th:text="${app.name()}">APPEARANCE</span><br/>
+                    </div>
+                </div>
+
+                <div class="select">
+                    <h3>Master:</h3>
+                    <div class="box" th:each="master : ${masters}">
+                        <input name="master" type="radio" th:value="${master}">
+                        <span th:text="${master.getName()}">MASTER</span><br/>
+                    </div>
+                </div>
+
+                <div style="clear: both"></div>
             </div>
         </fieldset>
 
-        <!-- th:value <- przekazuje do pola name="features" wartość id -->
 
         <div class="row">
-            <div align="center">
-                <h4>Your own Jedi name:</h4>
-                <input type="text" th:field="*{name}">
-                <br/><br/>
-                <button type="submit">Cook your Jedi ! :)</button>
+            <div class="select">
+                <h3>Strength:</h3>
+                <input type="text" placeholder="chose 1 - 1000" th:field="*{strength}">
+            </div>
+            <div class="select">
+                <h3>Name:</h3>
+<!--                <input name="name" type="text" placeholder="Warrior name ..." th:field="${warrior.name}">-->
+                <input type="text" th:field="${warrior.name}">
             </div>
         </div>
 
+        <div class="row">
+            <input type="image" style="filter: grayscale(100%)" th:src="@{images/ICOs/OK.png}" alt="Submit" height="100">
+        </div>
+        <div class="row" style="margin: -30px 0 0 0">Submit</div>
+
+<!--        <div class="row">-->
+<!--            <button type="submit" value="Submit">Submit</button>-->
+<!--        </div>-->
 
     </div>
-
 </form>
+
 </body>
 </html>

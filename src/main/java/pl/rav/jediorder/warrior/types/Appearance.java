@@ -7,6 +7,8 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum Appearance {
     YODA("Light/Yoda/Yoda2.png"),
+    VADER("Light/DarthVader.png"),
+    PALPATINE("Light/DarthSidious.png"),
     QUIGON("Light/QuiGonJinn.png"),
     OBIWAN("Light/ObiWanKenobi.png"),
     LUKE("Light/LukeSkywalker.png"),

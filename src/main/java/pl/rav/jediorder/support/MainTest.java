@@ -1,30 +1,15 @@
 package pl.rav.jediorder.support;
 
-import java.util.*;
+
+import pl.rav.jediorder.warrior.types.Appearance;
+
+import java.util.Arrays;
 
 public class MainTest {
 
-    private static int i;
-
     public static void main(String[] args) {
 
-//        Runnable
+        System.out.println(Arrays.toString(Appearance.values()));
 
-//        Thread;
-//        Date;
-//        String;
-//        Integer;
-
-        System.out.println(returnSth());
-        System.out.println(returnSth());
-
-        System.out.println(i);
-
-
-
-    }
-
-    private static int returnSth () {
-        return i++;
     }
 }
