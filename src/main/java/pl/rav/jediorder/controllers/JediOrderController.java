@@ -1,12 +1,10 @@
 package pl.rav.jediorder.controllers;
 
 import lombok.extern.log4j.Log4j2;
-import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.rav.jediorder.warrior.Jedi;
 import pl.rav.jediorder.warrior.Warrior;
@@ -57,8 +55,8 @@ public class JediOrderController {
         model.addAttribute("sides", Side.values());
         model.addAttribute("species", Species.values());
 
-        model.addAttribute("masters", Jedi.getMasters().values());
-        model.addAttribute("orders", Jedi.getOrders().values());
+        model.addAttribute("masters", Master.values());
+        model.addAttribute("orders", OrderName.values());
 
         model.addAttribute("warrior", new Warrior());
 
@@ -72,7 +70,8 @@ public class JediOrderController {
 //            log.error(errors);
 //        }
 //        System.out.println(model);
-        System.err.println(nextWarrior);
+        System.out.println(nextWarrior.string());
+
 //        Jedi.getJedi().entrySet().forEach(System.err::println);
 //        System.out.println(warrior);
         return "redirect:/newWarrior";
