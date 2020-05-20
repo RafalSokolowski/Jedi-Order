@@ -7,12 +7,12 @@ import pl.rav.jediorder.warrior.types.*;
 
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 public class Warrior {
 
-    private int id;
+//    private int id; // it supposed to be for data bases purpose... however I'll use name as a unique primary key , there cannot be two warriors with the same name !
 
     //    @NotEmpty(message = "Jedi name is mandatory and cannot be empty")
     private String name;
@@ -57,9 +57,16 @@ public class Warrior {
 //        Jedi.getJedi().put(this.name,this);
 //    }
 
+
+    @Override
+    public String toString() {
+        return name + ", " + side + ", " + order + ", " + grade + ", " + lightsaber + ", " +
+                strength + ", " + appearance + ", " + homeWorld + ", " + species + ", " + gender + ", " + master;
+    }
+
     public String string() {
         StringBuilder sb = new StringBuilder();
-        sb.append("id =         ").append(ifNullRedElseBlue(id)).append("\n");
+//        sb.append("id =         ").append(ifNullRedElseBlue(id)).append("\n");
         sb.append("name =       ").append(ifNullRedElseBlue(name)).append("\n");
         sb.append("side =       ").append(ifNullRedElseBlue(side)).append("\n");
         sb.append("order =      ").append(ifNullRedElseBlue(order)).append("\n");
@@ -81,7 +88,9 @@ public class Warrior {
         return Util.BLUE + s + Util.RESET;
     }
 
-
+//    public void print () {
+//        this.string();
+//    }
 
 
 }

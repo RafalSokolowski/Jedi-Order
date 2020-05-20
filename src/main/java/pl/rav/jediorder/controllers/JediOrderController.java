@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import pl.rav.jediorder.warrior.Jedi;
+import pl.rav.jediorder.warrior.Warriors;
 import pl.rav.jediorder.warrior.Warrior;
 import pl.rav.jediorder.warrior.types.*;
 
@@ -23,13 +23,15 @@ public class JediOrderController {
     public String toJediOrder(Model model) {
 //        Jedi.getJedi().forEach(model::addAttribute); // InteliJ converted form: Jedi.getJedi().forEach((k, v) -> model.addAttribute(k, v));
 //        model.asMap().forEach((k, v) -> log.info(k + " = " + v));
-        model.addAttribute("jedi", Jedi.getJedi());
-        model.asMap().values().forEach(System.out::println);
+        Warriors.printOrder(Warriors.getJedi());
+        model.addAttribute("jedi", Warriors.getJedi().getWarriors().values());
         return "jediOrder";
     }
 
     @GetMapping("/sithOrder")
-    public String toSithOrder() {
+    public String toSithOrder(Model model) {
+        Warriors.printOrder(Warriors.getSith());
+        model.addAttribute("sith", Warriors.getSith().getWarriors().values());
         return "sithOrder";
     }
 
@@ -70,12 +72,20 @@ public class JediOrderController {
 //            log.error(errors);
 //        }
 //        System.out.println(model);
-        System.out.println(nextWarrior.string());
 
-//        Jedi.getJedi().entrySet().forEach(System.err::println);
-//        System.out.println(warrior);
+        System.out.println(nextWarrior.string());
+//        nextWarrior.print();
+        boolean flag = Warriors.addWarriorToOrder(nextWarrior);
+        if (flag) log.info(nextWarrior.getName() + " was added to the " + nextWarrior.getOrder().getDesc() + " order");
+        else log.error ("no warrior to add");
+
+        Warriors.printOrder(Warriors.getJedi());
+        Warriors.printOrder(Warriors.getSith());
+
         return "redirect:/newWarrior";
     }
+
+
 
     @GetMapping("/test")
     public String toTest(Warrior warrior) {

@@ -21,9 +21,9 @@
         <li><a href="#">NEW ORDER</a></li>
         <li><a href="/newWarrior">NEW WARRIOR</a></li>
         <li><a href="/jediOrder">JEDI ORDER</a></li>
-<!--        <li><a href="#">JEDI WARRIORS</a></li>-->
+        <!--        <li><a href="#">JEDI WARRIORS</a></li>-->
         <li><a class="current" href="/sithOrder">SITH ORDER</a></li>
-<!--        <li><a href="#">SITH WARRIORS</a></li>-->
+        <!--        <li><a href="#">SITH WARRIORS</a></li>-->
     </ul>
     <h3>May the knowledge be with you . . . select the Sith character to be with the story</h3>
 </header>
@@ -31,26 +31,76 @@
 <section>
     <div class="warriors">
 
-    <div class="warriors">
-        <div class="warrior">
+
+        <div class="warrior" th:each="warrior : ${sith}">
             <figure>
-                <a th:href="@{warriors/DarkSide/DarthMaul}"><img src="/images/warriors/Dark/DarthMaul/DarthMaul.png"
-                                                                 alt="Darth Maul"></a>
-                <figcaption>Darth Maul</figcaption>
+                <a th:href="@{warriors/DarkSide/DarthMaul}">
+                    <img th:src="@{'/images/warriors/'} + ${warrior.getAppearance().getDesc()}" th:alt="${warrior.getName()}">
+                </a>
+                <figcaption th:text="${warrior.getName()}">WARRIOR NAME</figcaption>
             </figure>
+
+            <table class="desc">
+                <tr>
+                    <td><img style="transform: rotate(270deg); width: 20px" src="images/ICOs/grade.png"></td>
+                    <td><span th:text="${warrior.getGrade().getDesc()}">VALUE</span></td>
+                </tr>
+                <tr>
+                    <td><img src="images/ICOs/planet.png">
+                    <td><span th:text="${warrior.getHomeWorld().getDesc()}">VALUE</span></td>
+                </tr>
+                <tr>
+                    <td><img src="images/ICOs/gender.png">
+                    <td><span th:text="${warrior.getGender().getDesc()}">VALUE</span></td>
+                </tr>
+                <tr>
+                    <td><img src="images/ICOs/lightsaber.png">
+                    <td><span th:text="${warrior.getLightsaber().getDesc()}">VALUE</span></td>
+                </tr>
+                <tr>
+                    <td><img src="images/ICOs/strength.png">
+                    <td><span th:text="${warrior.getStrength()}">VALUE</span></td>
+                </tr>
+                <!--                <tr>-->
+                <!--                    <td><img src="images/ICOs/.png">-->
+                <!--                    <td><span th:text="${warrior.get().getDesc()}">VALUE</span></td>-->
+                <!--                </tr>-->
+                <!--                <tr>-->
+                <!--                    <td><img src="images/ICOs/.png">-->
+                <!--                    <td><span th:text="${warrior.get().getDesc()}">VALUE</span></td>-->
+                <!--                </tr>-->
+
+            </table>
+
+
         </div>
-        <div class="warrior">
-            <figure>
-                <a href="#"><img src="/images/warriors/Dark/KyloRen/KyloRen.png" alt="Kylo Ren"></a>
-                <figcaption>Kylo Ren</figcaption>
-            </figure>
-        </div>
-        <div class="warrior">
-            <figure>
-                <a href="#"><img src="/images/warriors/Dark/LeaderSnoke/LeaderSnoke.png" alt="Leader Snoke"></a>
-                <figcaption>Leader Snoke</figcaption>
-            </figure>
-        </div>
+
+
+
+
+
+<!--        <div class="warriors">-->
+<!--            <div class="warrior">-->
+<!--                <figure>-->
+<!--                    <a th:href="@{warriors/DarkSide/DarthMaul}"><img src="/images/warriors/Dark/DarthMaul/DarthMaul.png"-->
+<!--                                                                     alt="Darth Maul"></a>-->
+<!--                    <figcaption>Darth Maul</figcaption>-->
+<!--                </figure>-->
+<!--            </div>-->
+<!--            <div class="warrior">-->
+<!--                <figure>-->
+<!--                    <a href="#"><img src="/images/warriors/Dark/KyloRen/KyloRen.png" alt="Kylo Ren"></a>-->
+<!--                    <figcaption>Kylo Ren</figcaption>-->
+<!--                </figure>-->
+<!--            </div>-->
+<!--            <div class="warrior">-->
+<!--                <figure>-->
+<!--                    <a href="#"><img src="/images/warriors/Dark/LeaderSnoke/LeaderSnoke.png" alt="Leader Snoke"></a>-->
+<!--                    <figcaption>Leader Snoke</figcaption>-->
+<!--                </figure>-->
+<!--            </div>-->
+<!--        </div>-->
+
     </div>
 
 </section>

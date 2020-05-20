@@ -8,6 +8,7 @@ import lombok.Getter;
 public enum Lightsaber {
     SITH_LIGHTSABER("Dual-phase Sith lightsaber"),          // Vader
     DOUBLE_BLADED_LIGHTSABER("Double-bladed lightsaber"),
+    HILT_LIGHTSABER ("Standard-hilt lightsaber"),   // Maul
 //    DOUBLE_BLADED_SPINNING_LIGHTSABER("Double-bladed spinning lightsaber"),
     SPLIT_SABER("Split saber"),
     DUAL_PHASE_LIGHTSABER("Dual-phase lightsaber"),
