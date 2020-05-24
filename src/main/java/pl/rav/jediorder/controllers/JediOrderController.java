@@ -39,10 +39,43 @@ public class JediOrderController {
     public String toQuiGonJinn() {
         return "warriors/LightSide/QuiGonJinn";
     }
+    @GetMapping("/warriors/LightSide/LukeSkywalker")
+    public String LukeSkywalker() {
+        return "warriors/LightSide/LukeSkywalker";
+    }
+    @GetMapping("/warriors/LightSide/MaceWinu")
+    public String MaceWindu() {
+        return "warriors/LightSide/MaceWindu";
+    }
+    @GetMapping("/warriors/LightSide/Obi_WanKenobi")
+    public String Obi_WanKenobi() {
+        return "warriors/LightSide/Obi_WanKenobi";
+    }
+    @GetMapping("/warriors/LightSide/SaeseeTiin")
+    public String SaesseTiin() {return "warriors/LightSide/SaeseeTinn";}
+    @GetMapping("/warriors/LightSide/Yoda")
+    public String Yoda() {return "warriors/LightSide/Yoda";}
+
 
     @GetMapping("/warriors/DarkSide/DarthMaul")
     public String toDarthMual() {
         return "warriors/DarkSide/DarthMaul";
+    }
+    @GetMapping("/warriors/DarkSide/CountDooku")
+    public String CountDooku() {
+        return "warriors/DarkSide/CountDooku";
+    }
+    @GetMapping("/warriors/DarkSide/KyloRen")
+    public String KyloRen() {
+        return "warriors/DarkSide/KyloRen";
+    }
+    @GetMapping("/warriors/DarkSide/LeaderSnoke")
+    public String LeaderSnoke() {
+        return "warriors/DarkSide/LeaderSnoke";
+    }
+    @GetMapping("/warriors/DarkSide/Vader")
+    public String Vader() {
+        return "warriors/DarkSide/Vader";
     }
 
 
