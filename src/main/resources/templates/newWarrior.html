@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Jedi Panel</title>
+    <meta charset="UTF-8"/>
+    <meta name="description" content="Management panel for new Jedi creation and Jedi Order set"/>
+    <meta name="keywords" content="Jedi, StarWars"/>
+    <meta http-equiv="X-UA-Compatibile" content="IE=edge,chrome=1"/>
+    <meta name="author" content="Rav the entry level Jedi warrior:)"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/styleMain.css">
+</head>
+
+
+<script>
+    function playBackgroundMusic() {
+        var backgroundAudio = document.createElement("audio");
+        backgroundAudio.src = '/sounds/Yoda.mp3';
+        backgroundAudio.preload = "auto";
+        backgroundAudio.play();
+    }
+</script>
+
+
+<body onload="playBackgroundMusic()">
+
+<header class="background">
+    <ul id="menu">
+        <li><a href="/">ABOUT</a></li>
+        <li><a href="#">NEW ORDER</a></li>
+        <li><a class="current" href="/newWarrior">NEW WARRIOR</a></li>
+        <li><a href="/jediOrder">JEDI ORDER</a></li>
+        <!--        <li><a href="#">JEDI WARRIORS</a></li>-->
+        <li><a href="/sithOrder">SITH ORDER</a></li>
+        <!--        <li><a href="#">SITH WARRIORS</a></li>-->
+    </ul>
+    <h3>May the creation be with you . . . cook your own warrior :)</h3>
+</header>
+
+<form action="#" th:action="@{/newWarrior}" th:object="${warrior}" method="post">
+    <div id="container">
+
+<!--        <div style="font-size: large" th:text="${warrior}"></div>-->
+
+        <fieldset>
+            <legend>. Origin .</legend>
+            <div class="row">
+                <div class="select">
+                    <h3>Side:</h3>
+                    <div class="box" th:each="side : ${sides}">
+                        <input name="side" type="radio" th:value="${side.name()}">
+                        <span th:text="${side.getDesc()}">SIDE</span><br/>
+                    </div>
+                </div>
+
+                <div class="select">
+                    <h3>Gender:</h3>
+                    <div class="box" th:each="gender : ${gender}">
+                        <input name="gender" type="radio" th:value="${gender.name()}">
+                        <span th:text="${gender.getDesc()}">GENDER</span><br/>
+                    </div>
+                </div>
+
+                <div class="select">
+                    <h3>Species:</h3>
+                    <div class="box" th:each="species : ${species}">
+                        <input name="species" type="radio" th:value="${species.name()}">
+                        <span th:text="${species.getDesc()}">SPECIES</span><br/>
+                    </div>
+                </div>
+
+                <div class="select">
+                    <h3>Home World:</h3>
+                    <div class="box" th:each="planet : ${planet}">
+                        <input name="homeWorld" type="radio" th:value="${planet.name()}">
+                        <span th:text="${planet.getDesc()}">PLANET</span><br/>
+                    </div>
+                </div>
+
+                <div style="clear: both"></div>
+            </div>
+        </fieldset>
+
+
+        <div class="row">
+            <div class="select" style="width: 40%">
+                <h3>Lightsaber:</h3>
+                <div class="box" th:each="saber : ${lightsaber}">
+                    <input name="lightsaber" type="radio" th:value="${saber.name()}">
+                    <span th:text="${saber.getDesc()}">LIGHTSABER</span><br/>
+                </div>
+            </div>
+
+            <div class="select" style="width: 40%">
+                <h3>Order:</h3>
+                <div class="box" th:each="order : ${orders}">
+                    <input name="order" type="radio" th:value="${order.name()}">
+                    <span th:text="${order.getDesc()}">ORDER</span><br/>
+                </div>
+            </div>
+
+            <div style="clear: both"></div>
+        </div>
+
+
+        <fieldset>
+            <legend>. Affiliation .</legend>
+            <div class="row">
+                <div class="select">
+                    <h3>Grade:</h3>
+                    <div class="box" th:each="grade : ${grade}">
+                        <input name="grade" type="radio" th:value="${grade.name()}">
+                        <span th:text="${grade.getDesc()}">GRADE</span><br/>
+                    </div>
+                </div>
+
+                <div class="select">
+                    <h3>Appearance:</h3>
+                    <div class="box" th:each="app : ${appearance}">
+                        <input name="appearance" type="radio" th:value="${app.name()}">
+                        <span th:text="${app.name()}">APPEARANCE</span><br/>
+                    </div>
+                </div>
+
+                <div class="select">
+                    <h3>Master:</h3>
+                    <div class="box" th:each="master : ${masters}">
+                        <input name="master" type="radio" th:value="${master.name()}">
+                        <span th:text="${master.getDesc()}">MASTER</span><br/>
+                    </div>
+                </div>
+
+                <div style="clear: both"></div>
+            </div>
+        </fieldset>
+
+
+        <div class="row">
+            <div class="select">
+                <h3>Strength:</h3>
+<!--            <input name="strength" type="text" placeholder="chose 1 - 1000" th:field="*{strength}">-->
+                <input name="strength" type="text" placeholder="chose 1 - 1000" th:field="${warrior.strength}">
+            </div>
+
+            <div class="select">
+                <h3>Name:</h3>
+                <input name="name" type="text"  placeholder="Warrior's name ..." th:field="*{name}">
+            </div>
+        </div>
+
+        <div class="row">
+            <input type="image" style="filter: grayscale(100%)" th:src="@{images/ICOs/OK.png}" alt="Submit" height="100">
+        </div>
+        <div class="row" style="margin: -30px 0 0 0">Submit</div>
+
+<!--        <div class="row">-->
+<!--            <button type="submit" value="Submit">Submit</button>-->
+<!--        </div>-->
+
+    </div>
+</form>
+
+</body>
+</html>

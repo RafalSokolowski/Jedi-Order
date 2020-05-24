@@ -1,14 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <title>ERROR :(</title>
+    <link rel="stylesheet" type="text/css" media="all" href="css/styleMain.css">
 </head>
 
 <body>
 
-<p>There is an error my friend</p>
+<div class="error">
+    <p style="font-size: xx-large">We were hit by <span th:text="${status}">THE NUMBER</span></p>
+    <img th:src="@{error/pain.png}" style="width: 350px" alt="There is an error my friend">
+    <p>It's not you, it's us... we are having some difficulties :/</p>
+
+
+    <br/><br/><br/>
+    <table>
+        <thead>More details (to be removed in production version) :</thead>
+        <tbody>
+        <tr>
+            <td>Timestamp:</td>
+            <td th:text="${timestamp}">TIMESTAMP</td>
+        </tr>
+        <tr>
+            <td>Path:</td>
+            <td th:text="${path}">PATH</td>
+        </tr>
+        <tr>
+            <td>Error:</td>
+            <td th:text="${error}">ERROR</td>
+        </tr>
+        <tr>
+            <td>Status:</td>
+            <td th:text="${status}">STATUS</td>
+        </tr>
+        <tr>
+            <td>Exception:</td>
+            <td th:text="${exception}">EXCEPTION</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
 </body>
 </html>
