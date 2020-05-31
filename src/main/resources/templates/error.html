@@ -10,6 +10,12 @@
 
 <body>
 
+<header class="background">
+    <ul id="menue">
+        <li><a href="/">HOME</a></li>
+    </ul>
+</header>
+
 <div class="error">
     <p style="font-size: xx-large">We were hit by <span th:text="${status}">THE NUMBER</span></p>
     <img th:src="@{error/pain.png}" style="width: 350px" alt="There is an error my friend">
@@ -40,6 +46,14 @@
             <td>Exception:</td>
             <td th:text="${exception}">EXCEPTION</td>
         </tr>
+        <tr>
+            <td>Message:</td>
+            <td th:text="${message}">MESSAGE</td>
+        </tr>
+<!--        <tr>-->
+<!--            <td>Trace:</td>-->
+<!--            <td th:text="${trace}">TRACE</td>-->
+<!--        </tr>-->
         </tbody>
     </table>
 </div>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Management panel for new Jedi creation and Jedi Order set">
+    <meta name="keywords" content="Jedi, StarWars, JediOrder">
+    <meta http-equiv="X-UA-Compatibile" content="IE=edge,chrome=1">
+    <meta name="author" content="Rav the entry level Jedi warrior:)">
+    <link rel="stylesheet" type="text/css" media="all" href="css/styleMain.css">
+    <title>LOGIN</title>
+</head>
+
+<body style="text-align: center; display: inline-block">
+<!--<div class="ThError" style="font-size: x-large; padding: 30px" th:if="${param.error}">-->
+<!--    ERROR: Invalid data-->
+<!--</div>-->
+
+<form id="register" th:action="@{/register}" th:object="${newUser}" method="post">
+
+    <div style="text-align: center; display: inline-block">
+        <table class="registerForm" style="padding: 20px; border-spacing: 15px;">
+            <tr>
+                <td>First Name:</td>
+                <td><input type="text" name="firstName" placeholder="Your first name..." th:field="*{firstName}"/></td>
+                <td><span class="ThError" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">ERROR_MESSAGE</span></td>
+            </tr>
+            <tr>
+                <td>Last Name:</td>
+                <td><input type="text" name="lastName" placeholder="Your last name..." th:field="*{lastName}"/></td>
+                <td><span class="ThError" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">ERROR_MESSAGE</span></td>
+            </tr>
+            <tr>
+                <td>Age:</td>
+                <td><input type="text" name="age" placeholder="Your age ..." th:field="*{age}"/></td>
+                <td style="text-align: left"><span class="ThError" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">ERROR_MESSAGE</span></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" name="password" placeholder="Your password..." th:field="*{password}"/></td>
+                <td><span class="ThError" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">ERROR_MESSAGE</span></td>
+
+
+            </tr>
+            <tr>
+                <td>Repeat Password:</td>
+                <td><input type="password" name="matchingPassword" placeholder="Repeat password..." th:field="*{matchingPassword}"/></td>
+                <td><span class="ThError" th:if="${#fields.hasErrors()}" th:errors="*{matchingPassword}">ERROR_MESSAGE</span></td>
+<!--                <td><span class="ThError" th:each="error : ${#fields.errors()}" th:text="${error}">Validation error</span></td>-->
+
+            </tr>
+            <tr>
+                <td>e-mail:</td>
+                <td><input type="text" name="email" placeholder="electronic mail..." th:field="*{email}"/></td>
+                <td><span class="ThError" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">ERROR_MESSAGE</span></td>
+            </tr>
+        </table>
+
+        <input name="register" type="submit" value="Register"/>
+    </div>
+
+</form>
+
+<!--<form id="register" th:action="@{/register}" method="post">-->
+<!--    <input type="submit" value="Register"/>-->
+<!--</form>-->
+
+</body>
+</html>

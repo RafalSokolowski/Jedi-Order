@@ -162,17 +162,18 @@ footer {
     color: #FFFFFF;
 }
 
-footer a {
+a {
     text-decoration: none;
     color: #e7e7e7;
+    cursor: pointer;
 }
 
-footer a:visited {
+a:visited {
     /*text-decoration: none;*/
     color: #FFFFFF;
 }
 
-footer a:hover {
+a:hover {
     /*text-decoration: none;*/
     color: darkred;
 }
@@ -206,7 +207,7 @@ footer a:hover {
     /*border-style: solid;*/
 }
 
-input[type=text] {
+input[type=text], input[type=password] {
     background-color: #333333;
     border-radius: 4px;
     padding: 12px;
@@ -229,6 +230,55 @@ input[type=image]:hover {
 input[type=image]:active {
     transform: scale(0.9);
     opacity: 0.6;
+}
+
+
+
+input[type=submit] {
+    color: white;
+    background-color: black;
+    border-radius: 4px;
+    padding: 12px;
+    border: 1px solid white;
+    /* automatycznie nie zaciaga z body ?*/
+    font-family: StarWarsFont;
+    font-size: medium;
+    letter-spacing: 2px;
+}
+
+input[type=submit]:hover {
+    background-color: #333333;
+    cursor: pointer;
+}
+input[type=submit]:active {
+    transform: scale(0.9);
+    opacity: 0.6;
+}
+
+.register {
+    color: white;
+    background-color: black;
+    border-radius: 4px;
+    padding: 12px;
+    border: 1px solid white;
+    /* automatycznie nie zaciaga z body ?*/
+    font-family: StarWarsFont;
+    font-size: medium;
+    letter-spacing: 2px;
+}
+
+.register:hover {
+    background-color: #333333;
+    color: white;
+    cursor: pointer;
+}
+.register:active {
+    transform: scale(0.9);
+    opacity: 0.6;
+}
+
+.registerForm {
+    text-align: left;
 }
 
 .box {
@@ -258,6 +308,20 @@ fieldset {
     background-color: #333333;
 }
 
+.ThError {
+    color: red;
+}
+.ThInfo {
+    color: red;
+    font-size: x-large;
+    padding: 30px;
+}
+
+.swapi table td {
+    border: 1px solid #242424;
+    padding: 20px;
+}
+
 .desc {
     border: darkgray solid;
     border-radius: 3px;
@@ -275,4 +339,19 @@ fieldset {
 .desc td {
     vertical-align: center;
     height: 80px;
+}
+
+button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: StarWarsFont;
+    font-size: x-large;
+    letter-spacing: 2px;
+}
+
+button:hover {
+    color: darkgrey;
 }

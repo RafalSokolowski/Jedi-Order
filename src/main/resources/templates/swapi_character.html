@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="all" href="css/styleMain.css">
+    <title>Darth Maul</title>
+</head>
+
+<body>
+
+<header class="background">
+    <ul id="menue">
+        <li><a href="/swapi">BACK</a></li>
+    </ul>
+</header>
+
+<div th:if="${swapiWarrior == 'empty'}">
+    <section>
+        <div style="text-align: center;margin: auto">
+            <br/><br/>
+            The fraze "<u><span th:text="${searchFraze}">SEARCH_FRAZE</span></u>" was not found in the Star Wars API database
+            <br/><br/>
+            Please try different one
+            <br/><br/>
+        </div>
+    </section>
+</div>
+
+<div th:unless="${swapiWarrior == 'empty'}">
+    <section class="swapi" th:each="warrior : ${swapiWarrior}">
+
+        <h3>May the knowledge be with you . . . <span th:text="${warrior.name}">SWAPI CHARACTER</span></h3>
+
+        <!--    <table th:object="${swapiWarrior}">-->
+        <table>
+            <thead></thead>
+            <tbody>
+            <tr>
+                <td>Name</td>
+                <td th:text="${warrior.name}">NAME</td>
+                <td>The name of the character</td>
+            </tr>
+            <tr>
+                <td>Born/ Made</td>
+                <td th:text="${warrior.birth_year}">BORN_MADE</td>
+                <td>BBY (Before the Battle of Yavin or ABY (After the Battle of Yavin).<br/>The Battle of Yavin is a
+                    battle that occurs at the end of Star Wars episode IV: A New Hope.
+                </td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td th:text="${warrior.gender}">GENDER</td>
+                <td>Either "Male", "Female", "unknown" or "n/a" if the character does not have a gender :)</td>
+            </tr>
+            <tr>
+                <td>Species</td>
+                <td th:text="${warrior.species}">SPECIES</td>
+                <td>Species resource URLs that this character belongs to.</td>
+            </tr>
+            <tr>
+                <td>Eye color</td>
+                <td th:text="${warrior.eye_color}">EYE_COLOR</td>
+                <td>Will be "unknown" if not known or "n/a" if the character does not have an eye.</td>
+            </tr>
+            <tr>
+                <td>Hair color</td>
+                <td th:text="${warrior.hair_color}">HAIR_COLOR</td>
+                <td>Will be "unknown" if not known or "n/a" if the character does not have hair.</td>
+            </tr>
+            <tr>
+                <td>skin color</td>
+                <td th:text="${warrior.skin_color}">SKIN_COLOR</td>
+                <td>The skin color of this character.</td>
+            </tr>
+            <tr>
+                <td>Height</td>
+                <td th:text="${warrior.height}">HEIGHT</td>
+                <td>The height of the character in centimeters.</td>
+            </tr>
+            <tr>
+                <td>Mass</td>
+                <td th:text="${warrior.mass}">MASS</td>
+                <td>The mass of the character in kilograms.</td>
+            </tr>
+            <tr>
+                <td>Homeworld</td>
+                <td th:text="${warrior.homeworld}">HOMEWORLD</td>
+                <td>The URL of a planet resource, a planet that this character was born / made on or inhabits.</td>
+            </tr>
+            <tr>
+                <td>Starships</td>
+                <td th:text="${warrior.starships}">STARSCHIPS</td>
+                <td>Starship resource URLs that this person has piloted.</td>
+            </tr>
+            <tr>
+                <td>Vehicles</td>
+                <td th:text="${warrior.vehicles}">VEHICLES</td>
+                <td>Vehicles resource URLs that this person has piloted.</td>
+            </tr>
+            <tr>
+                <td>Films</td>
+                <td th:text="${warrior.films}">FILMS</td>
+                <td>Films resource URLs that this character has been in.</td>
+            </tr>
+            <tr>
+                <td>Created</td>
+                <td th:text="${warrior.created}">CREATED</td>
+                <td>The ISO 8601 date format of the time that this resource was created.</td>
+            </tr>
+            <tr>
+                <td>EDITED</td>
+                <td th:text="${warrior.edited}">EDITED</td>
+                <td>The ISO 8601 date format of the time that this resource was edited.</td>
+            </tr>
+            <tr>
+                <td>SWAPI URL</td>
+                <td th:text="${warrior.url}">URL</td>
+                <td>The hypermedia URL of this resource.</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </section>
+</div>
+
+<footer>
+    <u>Source:</u> The Star Wars API | first quantified and programmatically-formatted set of Star Wars data
+    <br><br>
+    <u>Read more:</u> <a href="https://swapi.dev/about" target="_blank">https://swapi.dev/</a>
+</footer>
+
+</body>
+
+</html>

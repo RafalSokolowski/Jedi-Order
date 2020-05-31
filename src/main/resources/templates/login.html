@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Management panel for new Jedi creation and Jedi Order set">
+    <meta name="keywords" content="Jedi, StarWars, JediOrder">
+    <meta http-equiv="X-UA-Compatibile" content="IE=edge,chrome=1">
+    <meta name="author" content="Rav the entry level Jedi warrior:)">
+    <link rel="stylesheet" type="text/css" media="all" href="css/styleMain.css">
+    <title>LOGIN</title>
+</head>
+
+<body style="text-align: center; display: inline-block">
+
+<div class="ThInfo" th:if="${param.error}">
+    ERROR: Invalid credentials
+</div>
+<div class="ThInfo" th:if="${param.logout}">
+    INFO: You have been logged out
+</div>
+<div class="ThInfo" th:if="${registeredUser != null}">
+    INFO: You have been successfully registered
+</div>
+
+<form id="login" th:action="@{/login}" method="post">
+
+    <div style="text-align: center; display: inline-block">
+        <table style="padding: 20px">
+            <tr>
+                <td style="text-align: left">User Name:</td>
+                <td><input type="text" name="username" placeholder="Provide username..."/></td>
+            </tr>
+            <tr>
+                <td style="text-align: left">Password:</td>
+                <td><input type="password" name="password" placeholder="Provide password..."/></td>
+            </tr>
+        </table>
+
+        <input name="login" type="submit" value="Login"/>
+<!--        <input th:href="@{/register}" type="submit" value="Register"/>-->
+        <a class="register" th:href="@{/register}">Register</a>
+
+    </div>
+
+</form>
+
+<!--<form id="register" th:action="@{/register}" method="post">-->
+<!--    <input type="submit" value="Register"/>-->
+<!--</form>-->
+
+</body>
+</html>
