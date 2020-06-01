@@ -21,6 +21,7 @@ Project created for evaluation under TISE/Connectis_ Bootcamp
 
 Project Mentor: 
  - Grand Master Piotr Wrona (aka Piotrolot1)
+
 Project Participants: 
  - Princess Iwona Radziwon (aka Iklara)
  - Padawan Rafal Sokolowski (aka rav)
