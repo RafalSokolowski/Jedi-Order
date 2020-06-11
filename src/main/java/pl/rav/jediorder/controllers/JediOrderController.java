@@ -179,7 +179,7 @@ public class JediOrderController {
 //        nextWarrior.print();
         boolean flag = Warriors.addWarriorToOrder(nextWarrior);
         if (flag)
-            log.info(nextWarrior.getName() + " was added to the " + nextWarrior.getOrder().getDesc() + " order");
+            log.info(nextWarrior.getName() + " was added to the " + nextWarrior.getOrderName().getDesc() + " order");
         else log.error("no warrior to add");
 
         Warriors.printOrder(Warriors.getJedi());

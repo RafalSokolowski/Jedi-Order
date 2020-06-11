@@ -6,10 +6,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import pl.rav.jediorder.support.ValidateUserString;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
@@ -20,9 +17,10 @@ import java.util.Collection;
 
 @Data  // @ToString, @EqualsAndHashCode, @Getter / @Setter and @RequiredArgsConstructor
 //@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true) // 'access' defines type of the constructor (here will be private) and 'force=true' to create noArgsConstructor with final fields (use 0/null/false data)
-@NoArgsConstructor(access = AccessLevel.PUBLIC, force = true) // 'access' defines type of the constructor (here will be private) and 'force=true' to create noArgsConstructor with final fields (use 0/null/false data)
+@NoArgsConstructor(access = AccessLevel.PROTECTED, force = true) // 'access' defines type of the constructor (here will be private) and 'force=true' to create noArgsConstructor with final fields (use 0/null/false data)
 @RequiredArgsConstructor // powyższy NoArgsConstructor usuwa RequiredArgsConstructor dlatego tu trzeba dodać raz jeszcze...
 
+@Table(name = "users")
 public class User implements UserDetails {
 
     private static final long serialVersion = 1L;

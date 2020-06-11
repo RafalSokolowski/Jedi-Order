@@ -1,8 +1,9 @@
-DELETE FROM jedi;
+DELETE FROM warrior;
 DELETE FROM users;
 
-INSERT INTO jedi (created, name, side, lightsaber, strength, appearance, jOrder)
-VALUES ('2020-04-24', 'Tim', 'Light Side', 'Red', 100, 'MasterYoda01','Defenders');
+INSERT INTO warrior (name, side, orderName, grade, lightsaber, strength, appearance, homeWorld, species, gender, master)
+VALUES ('Testowy', 'LIGHT', 'REPUBLIC', 'ADEPT', 'HILT_LIGHTSABER', 550,'LUKE','TATOOINE','HUMAN','MALE','M_YODA');
 
--- INSERT INTO jedi (created, name, side, lightsaber, strength, appearance, jOrder)
--- VALUES ('2020-04-24', 'Tim', 'Light Side', 'Red', 100, 'MasterYoda01','Defenders');
+
+-- INSERT INTO users (username, password, firstName, secondName, age, email, phone)
+-- VALUES ('Admin', 'Admin', 'Mr.', 'Administrator', 42, 'admin@admin.ad','');

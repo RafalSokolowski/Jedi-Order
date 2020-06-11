@@ -1,19 +1,27 @@
 package pl.rav.jediorder.warrior;
 
 import lombok.*;
-import pl.rav.jediorder.orders.Order;
 import pl.rav.jediorder.support.Util;
 import pl.rav.jediorder.warrior.types.*;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
+@NoArgsConstructor
+//@NoArgsConstructor (access = AccessLevel.PRIVATE, force = true)
+
+@Entity
+@Table(name="warrior")
 public class Warrior {
 
 //    private int id; // it supposed to be for data bases purpose... however I'll use name as a unique primary key , there cannot be two warriors with the same name !
 
+    @Id
     //    @NotEmpty(message = "Jedi name is mandatory and cannot be empty")
     private String name;
 
@@ -21,7 +29,7 @@ public class Warrior {
     private Side side;
 
     //    @NotEmpty(message = "Your mighty Jedi needs to belong to Order")
-    private OrderName order;
+    private OrderName orderName;
 
     //    @NotEmpty(message = "Grade cannot be empty")
     private Grade grade;
@@ -60,7 +68,7 @@ public class Warrior {
 
     @Override
     public String toString() {
-        return name + ", " + side + ", " + order + ", " + grade + ", " + lightsaber + ", " +
+        return name + ", " + side + ", " + orderName + ", " + grade + ", " + lightsaber + ", " +
                 strength + ", " + appearance + ", " + homeWorld + ", " + species + ", " + gender + ", " + master;
     }
 
@@ -69,7 +77,7 @@ public class Warrior {
 //        sb.append("id =         ").append(ifNullRedElseBlue(id)).append("\n");
         sb.append("name =       ").append(ifNullRedElseBlue(name)).append("\n");
         sb.append("side =       ").append(ifNullRedElseBlue(side)).append("\n");
-        sb.append("order =      ").append(ifNullRedElseBlue(order)).append("\n");
+        sb.append("order =      ").append(ifNullRedElseBlue(orderName)).append("\n");
         sb.append("grade =      ").append(ifNullRedElseBlue(grade)).append("\n");
         sb.append("lightsaber = ").append(ifNullRedElseBlue(lightsaber)).append("\n");
         sb.append("strength =   ").append(ifNullRedElseBlue(strength)).append("\n");

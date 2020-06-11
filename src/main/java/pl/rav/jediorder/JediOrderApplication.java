@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 import pl.rav.jediorder.warrior.SwapiWarriorByID;
 
 @Log4j2
-@SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
+@SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 public class JediOrderApplication {
 
     public static void main(String[] args) {
@@ -45,13 +45,10 @@ public class JediOrderApplication {
 //        log.info(test5.getName() + " : " + test5);
 
 
-
 //        SwapiWarrior test3 = new RestTemplate().getForObject("https://swapi.dev/api/people/?search=r2", SwapiWarrior.class);
 //        log.info(test3.getName() + " : " + test3);
 
     }
-
-
 
 
     @Bean
@@ -64,10 +61,8 @@ public class JediOrderApplication {
         return args -> {
             SwapiWarriorByID warrior = restTemplate.getForObject(
                     "https://swapi.dev/api/people/1/", SwapiWarriorByID.class);
-            log.info(warrior.toString());
+            log.info("Testing the SWAPI with id 1: " + warrior.getName() + ", and the details: " + warrior.toString());
         };
     }
-
-
 
 }
