@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="UTF-8">
-<!--    <meta http-equiv="refresh" content="2; URL=/main"> &lt;!&ndash; automatyczne przekierowanie, ilość sekunt do przekierowania: content&ndash;&gt;-->
+    <!--    <meta http-equiv="refresh" content="2; URL=/main"> &lt;!&ndash; automatyczne przekierowanie, ilość sekunt do przekierowania: content&ndash;&gt;-->
     <link rel="stylesheet" type="text/css" media="all" href="css/styleMain.css">
     <title>Best Jedi Order :)</title>
 
@@ -21,26 +21,52 @@
 
         /*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_image_shake*/
         /*START*/
-        img:hover {
+        /*img:hover {*/
+        img {
             animation: shake 0.5s;
             animation-iteration-count: infinite;
             /*background: url("static/images/Yoda3.png");*/
         }
-
-        @keyframes
-        shake {
-            0% { transform: translate(1px, 1px) rotate(0deg); }
-            10% { transform: translate(-1px, -2px) rotate(-1deg); }
-            20% { transform: translate(-3px, 0px) rotate(1deg); }
-            30% { transform: translate(3px, 2px) rotate(0deg); }
-            40% { transform: translate(1px, -1px) rotate(1deg); }
-            50% { transform: translate(-1px, 2px) rotate(-1deg); }
-            60% { transform: translate(-3px, 1px) rotate(0deg); }
-            70% { transform: translate(3px, 1px) rotate(-1deg); }
-            80% { transform: translate(-1px, -1px) rotate(1deg); }
-            90% { transform: translate(1px, 2px) rotate(0deg); }
-            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        img:hover {
+            animation: none;
         }
+
+        @keyframes shake {
+            0% {
+                transform: translate(1px, 1px) rotate(0deg);
+            }
+            10% {
+                transform: translate(-1px, -2px) rotate(-1deg);
+            }
+            20% {
+                transform: translate(-3px, 0px) rotate(1deg);
+            }
+            30% {
+                transform: translate(3px, 2px) rotate(0deg);
+            }
+            40% {
+                transform: translate(1px, -1px) rotate(1deg);
+            }
+            50% {
+                transform: translate(-1px, 2px) rotate(-1deg);
+            }
+            60% {
+                transform: translate(-3px, 1px) rotate(0deg);
+            }
+            70% {
+                transform: translate(3px, 1px) rotate(-1deg);
+            }
+            80% {
+                transform: translate(-1px, -1px) rotate(1deg);
+            }
+            90% {
+                transform: translate(1px, 2px) rotate(0deg);
+            }
+            100% {
+                transform: translate(1px, -2px) rotate(-1deg);
+            }
+        }
+
         /*END*/
     </style>
 
@@ -65,7 +91,7 @@
 <header class="background">
     <ul id="menue">
         <li><a class="current" href="/">ABOUT</a></li>
-<!--        <li><a href="#">NEW ORDER</a></li>-->
+        <!--        <li><a href="#">NEW ORDER</a></li>-->
         <li><a href="/newWarrior">NEW WARRIOR</a></li>
         <li><a href="/jediOrder">JEDI ORDER</a></li>
         <li><a href="/sithOrder">SITH ORDER</a></li>
@@ -76,11 +102,16 @@
     </ul>
 </header>
 
+<div style="font-size: x-large; text-align: center; line-height: 1.5;">
+    Great to see you Dear <span th:text="${loggedUserName}" style="color: red">LOGGED_USER_NAME</span> !
+
+    <br/>Have an awesome experience with the platform <span style='font-size: 25px; filter: grayscale(100%)'>&#128512;</span> !
+</div>
 
 <img th:src="@{/images/May_The_Force_Be_With_You.png}" alt="May The Force Be With You" style="width: 50%"
-     onMouseOver ="this.setAttribute('src', '/images/Yoda3.png')"
-     onMouseOut  ="this.setAttribute('src', '/images/May_The_Force_Be_With_You.png')"
-     onClick     ="this.setAttribute('src', '/main.html')"/>
+     onMouseOver="this.setAttribute('src', '/images/Yoda3.png')"
+     onMouseOut="this.setAttribute('src', '/images/May_The_Force_Be_With_You.png')"/>
+<!--     onClick="this.setAttribute('src', '/main.html')"/>-->
 
 
 <!-- Side by Side-->

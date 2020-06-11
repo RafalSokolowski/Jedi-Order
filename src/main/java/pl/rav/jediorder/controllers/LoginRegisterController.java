@@ -18,24 +18,42 @@ import javax.validation.Valid;
 
 @Log4j2
 @Controller
-@RequestMapping("/register_v2")
-public class RegisterController {
+public class LoginRegisterController {
 
     private UserRepo userRepo;
     private PasswordEncoder passwordEncoder;
 
-    public RegisterController(UserRepo userRepo, PasswordEncoder passwordEncoder) {
+    public LoginRegisterController(UserRepo userRepo, PasswordEncoder passwordEncoder) {
         this.userRepo = userRepo;
         this.passwordEncoder = passwordEncoder;
+//        User defaultUser = new User("user", "user", "First Name", "Second Name", "30", "p.p@p", "500-500-500");
+        User defaultUser = new User("user", passwordEncoder.encode("user"), null, null, null, null, null);
+        userRepo.save(defaultUser);
+        log.info("default user created and saved (login:user / password:user)");
     }
 
-    @GetMapping
+    @GetMapping("/login")
+    public String login() {
+
+//        User defaultUser = new User("user", passwordEncoder.encode("user"), null, null, null, null,null);
+//        userRepo.save(defaultUser);
+//        log.info("default user created and saved (login:user / password:user)");
+        return "login";
+    }
+
+    @PostMapping("/login")
+    public String logged(User user) {
+//        log.info("Following user has just been logged: " + user.getUsername());
+        return "/";
+    }
+
+    @GetMapping("/register_v2")
     public String registerForm(Model model) {
         model.addAttribute("userForm", new UserForm());
         return "register_v2";
     }
 
-    @PostMapping
+    @PostMapping("/register_v2")
     public String collectForm(@Valid @ModelAttribute UserForm userForm, BindingResult result, Model model) {
         if (result.hasErrors()) {
             model.addAttribute("userForm", userForm);

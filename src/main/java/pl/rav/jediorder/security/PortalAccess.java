@@ -31,8 +31,8 @@ public class PortalAccess extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder authentication) throws Exception {
-        authentication.inMemoryAuthentication()
-                .withUser("user").password(passwordEncoder().encode("user")).authorities("ROLE_USER");
+//        authentication.inMemoryAuthentication()
+//                .withUser("user").password(passwordEncoder().encode("user")).authorities("ROLE_USER");
 //                .and()
 //                .withUser("admin").password(passwordEncoder().encode("admin")).authorities("ROLE_ADMIN");
         authentication

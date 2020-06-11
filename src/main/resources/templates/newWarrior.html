@@ -35,7 +35,7 @@
         <li><a href="/sithOrder">SITH ORDER</a></li>
         <li><a href="swapi">SWAPI</a></li>
     </ul>
-    <h3>May the creation be with you . . . cook your own warrior :)</h3>
+    <h3>May the creation be with you . . . Dear <span th:text="${loggedUserName}" style="color: red">LOGGED_USER_NAME</span> cook your own warrior</h3>
 </header>
 
 <form action="#" th:action="@{/newWarrior}" th:object="${warrior}" method="post">

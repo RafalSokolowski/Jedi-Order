@@ -5,7 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
-import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.AuthenticatedPrincipal;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+//import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.stereotype.Controller;
@@ -15,11 +19,13 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import pl.rav.jediorder.support.RequestToSwapiID;
 import pl.rav.jediorder.support.RequestToSwapiSEARCH;
 import pl.rav.jediorder.users.NewUser;
+import pl.rav.jediorder.users.User;
 import pl.rav.jediorder.warrior.SwapiWarriorByID;
 import pl.rav.jediorder.warrior.SwapiWarriorBySearch;
 import pl.rav.jediorder.warrior.Warriors;
@@ -35,74 +41,17 @@ import java.util.Arrays;
 //@EnableAutoConfiguration(exclude = SecurityAutoConfiguration.class)
 public class JediOrderController {
 
-//    private final InMemoryUserDetailsManager inMemoryUserDetailsManager;
-//    @Autowired
-//    public JediOrderController(InMemoryUserDetailsManager inMemoryUserDetailsManager) {
-//        this.inMemoryUserDetailsManager = inMemoryUserDetailsManager;
-//    }
-
-//    @Override
-//    public void addViewControllers(ViewControllerRegistry registry) {
-//
-//    }
+    private User user;
 
     @GetMapping("/")
-    public String home() {
+//    public String home(@AuthenticationPrincipal User user, Model model) {
+    public String home(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        this.user = (User) authentication.getPrincipal();
+        log.info("Following user has just been logged: " + user.getUsername());
+        model.addAttribute("loggedUserName", user.getUsername());
         return "index";
     }
-
-
-    @GetMapping("/login")
-    public String login() {
-//        log.info("users: " + inMemoryUserDetailsManager.loadUserByUsername("admin"));
-        return "login";
-    }
-//    @PostMapping("/login")
-//    public String logging (Model model, BindingResult result)  {
-//        if (result.hasErrors()) {
-//            model.addAttribute()
-//        }
-//    }
-
-//    @GetMapping("/register")
-//    public String register(Model model) {
-//        model.addAttribute("newUser", new NewUser());
-//        return "register";
-//    }
-//
-//    @PostMapping("/register")
-//    public String register(@Valid @ModelAttribute NewUser newUser, BindingResult errors, Model model) {
-//        if (errors.hasErrors()) {
-//            log.error("registration error: " + errors);
-//            return "register";
-//        }
-//        log.info("Following user has just been registered: " + newUser);
-//        model.addAttribute("registeredUser", newUser);
-//
-////        SecurityProperties.User user = new SecurityProperties.User();
-////        user.setName(newUser.getFirstName() + " " + newUser.getLastName());
-////        user.setPassword(newUser.getPassword());
-////        user.setRoles(Arrays.asList("USER"));
-////        log.info("New user ready to be added: " + user.getName() +", " + user.getPassword());
-//
-//        UserDetails userDetails = User
-//                .withUsername(newUser.getFirstName())
-//                .password(newUser.getPassword())
-//                .roles("USER")
-//                .build();
-//
-//        inMemoryUserDetailsManager.createUser(userDetails);
-//
-//        return "login";
-//    }
-
-
-//    @PostMapping("/register")
-//    public String register(Model model) {
-//        model.addAttribute("newUser", new User());
-//        return "register";
-//    }
-
 
     @GetMapping("/jediOrder")
     public String toJediOrder(Model model) {
@@ -110,6 +59,7 @@ public class JediOrderController {
 //        model.asMap().forEach((k, v) -> log.info(k + " = " + v));
         Warriors.printOrder(Warriors.getJedi());
         model.addAttribute("jedi", Warriors.getJedi().getWarriors().values());
+        model.addAttribute("loggedUserName", user.getUsername());
         return "jediOrder";
     }
 
@@ -117,6 +67,7 @@ public class JediOrderController {
     public String toSithOrder(Model model) {
         Warriors.printOrder(Warriors.getSith());
         model.addAttribute("sith", Warriors.getSith().getWarriors().values());
+        model.addAttribute("loggedUserName", user.getUsername());
         return "sithOrder";
     }
 
@@ -135,6 +86,7 @@ public class JediOrderController {
     public String toSwapi(Model model) {
         model.addAttribute("requestToSwapiID", new RequestToSwapiID());
         model.addAttribute("requestToSwapiSEARCH", new RequestToSwapiSEARCH());
+        model.addAttribute("loggedUserName", user.getUsername());
         return "swapi";
     }
 
@@ -206,11 +158,11 @@ public class JediOrderController {
         model.addAttribute("planet", Planet.values());
         model.addAttribute("sides", Side.values());
         model.addAttribute("species", Species.values());
-
         model.addAttribute("masters", Master.values());
         model.addAttribute("orders", OrderName.values());
-
         model.addAttribute("warrior", new Warrior());
+
+        model.addAttribute("loggedUserName", user.getUsername());
 
         return "newWarrior";
     }
