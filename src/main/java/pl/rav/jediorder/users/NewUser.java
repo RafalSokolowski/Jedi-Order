@@ -2,9 +2,8 @@ package pl.rav.jediorder.users;
 
 import lombok.*;
 import pl.rav.jediorder.support.PasswordMatch;
-import pl.rav.jediorder.support.ValidateName;
+import pl.rav.jediorder.support.ValidateUserString;
 
-import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 @Getter
@@ -19,13 +18,13 @@ public class NewUser {
     //    @NotNull(message = "first name cannot be null")
 //    @NotEmpty(message = "first name cannot be empty")
 //    @Size(min=3, max=20, message = "first name must be between 3 and 40 characters")
-    @ValidateName
+    @ValidateUserString
     private String firstName;
 
     //    @NotNull(message = "last name cannot be null")
 //    @NotEmpty(message = "last name cannot be empty")
 //    @Size(min=3, max=40, message = "last name must be between 3 and 40 characters")
-    @ValidateName
+    @ValidateUserString
     private String lastName;
 
     @Min(value = 12, message = "Age should not be less than 12")

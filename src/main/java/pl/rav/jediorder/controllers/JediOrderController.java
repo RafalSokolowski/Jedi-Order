@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import pl.rav.jediorder.support.RequestToSwapiID;
 import pl.rav.jediorder.support.RequestToSwapiSEARCH;
 import pl.rav.jediorder.users.NewUser;
@@ -34,11 +35,16 @@ import java.util.Arrays;
 //@EnableAutoConfiguration(exclude = SecurityAutoConfiguration.class)
 public class JediOrderController {
 
-    private final InMemoryUserDetailsManager inMemoryUserDetailsManager;
-    @Autowired
-    public JediOrderController(InMemoryUserDetailsManager inMemoryUserDetailsManager) {
-        this.inMemoryUserDetailsManager = inMemoryUserDetailsManager;
-    }
+//    private final InMemoryUserDetailsManager inMemoryUserDetailsManager;
+//    @Autowired
+//    public JediOrderController(InMemoryUserDetailsManager inMemoryUserDetailsManager) {
+//        this.inMemoryUserDetailsManager = inMemoryUserDetailsManager;
+//    }
+
+//    @Override
+//    public void addViewControllers(ViewControllerRegistry registry) {
+//
+//    }
 
     @GetMapping("/")
     public String home() {
@@ -51,40 +57,44 @@ public class JediOrderController {
 //        log.info("users: " + inMemoryUserDetailsManager.loadUserByUsername("admin"));
         return "login";
     }
+//    @PostMapping("/login")
+//    public String logging (Model model, BindingResult result)  {
+//        if (result.hasErrors()) {
+//            model.addAttribute()
+//        }
+//    }
 
-    @GetMapping("/register")
-    public String register(Model model) {
-        model.addAttribute("newUser", new NewUser());
-        return "register";
-    }
-
-    @PostMapping("/register")
-    public String register(@Valid @ModelAttribute NewUser newUser, BindingResult errors, Model model) {
-        if (errors.hasErrors()) {
-            log.error("registration error: " + errors);
-            return "register";
-        }
-        log.info("Following user has just been registered: " + newUser);
-        model.addAttribute("registeredUser", newUser);
-
-//        SecurityProperties.User user = new SecurityProperties.User();
-//        user.setName(newUser.getFirstName() + " " + newUser.getLastName());
-//        user.setPassword(newUser.getPassword());
-//        user.setRoles(Arrays.asList("USER"));
-//        log.info("New user ready to be added: " + user.getName() +", " + user.getPassword());
-
-        UserDetails userDetails = User
-                .withUsername(newUser.getFirstName())
-                .password(newUser.getPassword())
-                .roles("USER")
-                .build();
-
-        inMemoryUserDetailsManager.createUser(userDetails);
-
-
-
-        return "login";
-    }
+//    @GetMapping("/register")
+//    public String register(Model model) {
+//        model.addAttribute("newUser", new NewUser());
+//        return "register";
+//    }
+//
+//    @PostMapping("/register")
+//    public String register(@Valid @ModelAttribute NewUser newUser, BindingResult errors, Model model) {
+//        if (errors.hasErrors()) {
+//            log.error("registration error: " + errors);
+//            return "register";
+//        }
+//        log.info("Following user has just been registered: " + newUser);
+//        model.addAttribute("registeredUser", newUser);
+//
+////        SecurityProperties.User user = new SecurityProperties.User();
+////        user.setName(newUser.getFirstName() + " " + newUser.getLastName());
+////        user.setPassword(newUser.getPassword());
+////        user.setRoles(Arrays.asList("USER"));
+////        log.info("New user ready to be added: " + user.getName() +", " + user.getPassword());
+//
+//        UserDetails userDetails = User
+//                .withUsername(newUser.getFirstName())
+//                .password(newUser.getPassword())
+//                .roles("USER")
+//                .build();
+//
+//        inMemoryUserDetailsManager.createUser(userDetails);
+//
+//        return "login";
+//    }
 
 
 //    @PostMapping("/register")

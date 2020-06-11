@@ -22,9 +22,9 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 
 @ReportAsSingleViolation
-public @interface ValidateName {
+public @interface ValidateUserString {
 
-        String message() default "Field cannot be empty and must have 3-20 characters";
+        String message() default "field cannot be empty and must have 3-20 characters";
 
         Class<?>[] groups() default { };
 

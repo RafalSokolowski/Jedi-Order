@@ -178,7 +178,6 @@ a:hover {
     color: darkred;
 }
 
-
 #container {
     margin-left: auto;
     margin-right: auto;
@@ -232,8 +231,6 @@ input[type=image]:active {
     opacity: 0.6;
 }
 
-
-
 input[type=submit] {
     color: white;
     background-color: black;
@@ -253,6 +250,29 @@ input[type=submit]:hover {
 input[type=submit]:active {
     transform: scale(0.9);
     opacity: 0.6;
+}
+
+.logout input[type=submit]  {
+    border: none;
+    background-color: #333333;
+    display: block;
+    font-size: x-large;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 15px;
+    text-decoration: none;
+}
+.logout input[type=submit]:hover {
+    border-radius: 5px;
+    background-color: #111;
+    color: darkred;
+    border: none;
+}
+.logout input[type=submit]:active {
+    transform: scale(1);
+    opacity: 1;
+    border: none;
+    color: red;
 }
 
 .register {

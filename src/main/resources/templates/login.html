@@ -20,8 +20,8 @@
 <div class="ThInfo" th:if="${param.logout}">
     INFO: You have been logged out
 </div>
-<div class="ThInfo" th:if="${registeredUser != null}">
-    INFO: You have been successfully registered
+<div class="ThInfo" th:if="${newUsername != null}">
+    INFO: <span th:text="${newUsername}">NAME</span> has been successfully registered
 </div>
 
 <form id="login" th:action="@{/login}" method="post">
@@ -40,7 +40,7 @@
 
         <input name="login" type="submit" value="Login"/>
 <!--        <input th:href="@{/register}" type="submit" value="Register"/>-->
-        <a class="register" th:href="@{/register}">Register</a>
+        <a class="register" th:href="@{/register_v2}">Register</a>
 
     </div>
 

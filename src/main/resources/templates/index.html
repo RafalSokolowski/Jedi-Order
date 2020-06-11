@@ -65,11 +65,14 @@
 <header class="background">
     <ul id="menue">
         <li><a class="current" href="/">ABOUT</a></li>
-        <li><a href="#">NEW ORDER</a></li>
+<!--        <li><a href="#">NEW ORDER</a></li>-->
         <li><a href="/newWarrior">NEW WARRIOR</a></li>
         <li><a href="/jediOrder">JEDI ORDER</a></li>
         <li><a href="/sithOrder">SITH ORDER</a></li>
         <li><a href="swapi">SWAPI</a></li>
+        <form class="logout" method="post" th:action="@{/logout}">
+            <li><input type="submit" value="LOGOUT"/></li>
+        </form>
     </ul>
 </header>
 
