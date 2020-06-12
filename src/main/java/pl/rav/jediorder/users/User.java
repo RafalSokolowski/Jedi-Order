@@ -45,7 +45,7 @@ public class User implements UserDetails {
     private final String email;
     private final String phone;
     private final boolean isAdmin;
-    private boolean isOn;
+    private boolean isOn = true;
 
     @PrePersist
     void setCreated() {

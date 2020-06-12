@@ -35,6 +35,9 @@ import pl.rav.jediorder.warrior.types.*;
 
 import javax.validation.Valid;
 import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 @Log4j2
 @Controller
@@ -57,14 +60,33 @@ public class JediOrderController {
         model.addAttribute("loggedUserName", user.getUsername());
 
         if (user.isAdmin()) {
-            userRepo.findAll().forEach(System.out::println);
-            model.addAttribute("users", userRepo.findAll());
-            return "adminPanel";
+//            userRepo.findAll().forEach(System.out::println);
+//            model.addAttribute("users", userRepo.findAll());
+//            userRepo.findByUsername("User").setOn(false);
+//            log.error(userRepo.findByUsername("User"));
+            return "redirect:/adminPanel";
         }
         return "index";
+    }
 
+    @GetMapping("/adminPanel")
+    public String toAdminPanel(Model model) {
+        userRepo.findAll().forEach(System.out::println);
+        model.addAttribute("loggedUserName", user.getUsername());
+        model.addAttribute("users", userRepo.findAll());
+//        model.addAttribute("statuses", new LinkedHashMap<String, String>());
+//        model.addAttribute("statuses", new LinkedList<String>());
+        return "adminPanel";
+    }
 
+    @PostMapping("/adminPanel")
+    public String update(Model model) {
+        model.addAttribute("loggedUserName", user.getUsername());
+        model.addAttribute("users", userRepo.findAll());
 
+//        log.info("What has changed: " + userRepo.findAll());
+//        return "redirect:/adminPanel";
+        return "adminPanel";
     }
 
     @GetMapping("/jediOrder")

@@ -60,7 +60,7 @@
 <!--    <li style="clear: both; margin: 0; padding: 0"></li>-->
 <!--</ul>-->
 
-<form>
+<form th:action="@{/adminPanel}" method="post">
     <table class="users">
         <thead style="background-color: #222222;">
         <tr>
@@ -91,7 +91,8 @@
             <td th:text="${user.getCreated()}"></td>
             <!--        <td th:text="${user.isEnabled()}"></td>-->
 <!--            <td><input type="checkbox" th:checked="${user.isEnabled()} ? 'checked' : ''" th:value="${user.isOn()}"/></td>-->
-            <td><input type="checkbox" th:checked=("${user.isEnabled()}") th:value="${user.isOn()}"/></td>
+<!--            <td><input name="isOn" type="checkbox" th:checked="${user.isEnabled()}" th:value="${user.isOn()}"/></td>-->
+            <td><input name="isOn" type="checkbox" th:checked="${user.isEnabled()}" th:value="${user.isOn()}"/></td>
 
         </tr>
         </tbody>
