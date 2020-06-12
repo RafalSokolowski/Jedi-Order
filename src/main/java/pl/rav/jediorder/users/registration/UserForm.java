@@ -45,7 +45,7 @@ public class UserForm {
     private String phone;
 
     public User createUser(PasswordEncoder passwordEncoder) {
-        return new User(username, passwordEncoder.encode(password), firstName, secondName, age, email, phone);
+        return new User(username, passwordEncoder.encode(password), firstName, secondName, age, email, phone, false);
     }
 
 }

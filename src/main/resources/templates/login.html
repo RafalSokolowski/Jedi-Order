@@ -14,9 +14,11 @@
 
 <body style="text-align: center; display: inline-block">
 
-<div class="ThInfo" th:if="${param.error}">
-    ERROR: Invalid credentials
-</div>
+<div class="ThInfo" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+
+<!--<div class="ThInfo" th:if="${param.error}">-->
+<!--    ERROR: Invalid credentials-->
+<!--</div>-->
 <div class="ThInfo" th:if="${param.logout}">
     INFO: You have been logged out
 </div>
@@ -24,16 +26,19 @@
     INFO: <span th:text="${newUsername}">NAME</span> has been successfully registered
 </div>
 
+<!--<form id="login" th:action="@{/login}" method="post" th:object="${loginAttempt}">-->
 <form id="login" th:action="@{/login}" method="post">
 
     <div style="text-align: center; display: inline-block">
         <table style="padding: 20px">
             <tr>
                 <td style="text-align: left">User Name:</td>
+<!--                <td><input type="text" name="username" placeholder="Provide username..." th:field="*{username}"/></td>-->
                 <td><input type="text" name="username" placeholder="Provide username..."/></td>
             </tr>
             <tr>
                 <td style="text-align: left">Password:</td>
+<!--                <td><input type="password" name="password" placeholder="Provide password..." th:field="*{password}"/></td>-->
                 <td><input type="password" name="password" placeholder="Provide password..."/></td>
             </tr>
         </table>
@@ -41,10 +46,12 @@
         <input name="login" type="submit" value="Login"/>
 <!--        <input th:href="@{/register}" type="submit" value="Register"/>-->
         <a class="register" th:href="@{/register_v2}">Register</a>
-
     </div>
-
 </form>
+
+<!--<br/><br/><br/>username: <span th:text="${loginAttempt}">USERNAME</span>-->
+
+<!--    <span th:if="${loginAttempt}"></span>-->
 
 <!--<form id="register" th:action="@{/register}" method="post">-->
 <!--    <input type="submit" value="Register"/>-->

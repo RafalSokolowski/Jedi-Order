@@ -26,6 +26,7 @@ import pl.rav.jediorder.support.RequestToSwapiID;
 import pl.rav.jediorder.support.RequestToSwapiSEARCH;
 import pl.rav.jediorder.users.NewUser;
 import pl.rav.jediorder.users.User;
+import pl.rav.jediorder.users.UserRepo;
 import pl.rav.jediorder.warrior.SwapiWarriorByID;
 import pl.rav.jediorder.warrior.SwapiWarriorBySearch;
 import pl.rav.jediorder.warrior.Warriors;
@@ -35,22 +36,35 @@ import pl.rav.jediorder.warrior.types.*;
 import javax.validation.Valid;
 import java.util.Arrays;
 
-@Controller
 @Log4j2
-
+@Controller
 //@EnableAutoConfiguration(exclude = SecurityAutoConfiguration.class)
 public class JediOrderController {
 
     private User user;
+    private UserRepo userRepo;
+
+    public JediOrderController(LoginRegisterController loginRegisterController) {
+        this.userRepo = loginRegisterController.getUserRepo();
+    }
 
     @GetMapping("/")
 //    public String home(@AuthenticationPrincipal User user, Model model) {
     public String home(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         this.user = (User) authentication.getPrincipal();
-        log.info("Following user has just been logged: " + user.getUsername());
+        log.info("Following user has just been logged in: " + user.getUsername() + " " + user.getAuthorities());
         model.addAttribute("loggedUserName", user.getUsername());
+
+        if (user.isAdmin()) {
+            userRepo.findAll().forEach(System.out::println);
+            model.addAttribute("users", userRepo.findAll());
+            return "adminPanel";
+        }
         return "index";
+
+
+
     }
 
     @GetMapping("/jediOrder")

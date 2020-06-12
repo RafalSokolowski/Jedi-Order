@@ -13,10 +13,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import pl.rav.jediorder.users.User;
-
+import pl.rav.jediorder.users.login.AppAuthenticationFailureHandler;
 
 
 // in-memory authentication with 2 users (classic user and admin)
@@ -45,7 +46,7 @@ public class PortalAccess extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers("/background/*", "/css/*", "/images/*", "/font/StarWarsFont/*", "/sounds/*", "/error/*", "/login", "/error", "/register", "/register_v2").permitAll()
+                .antMatchers("/background/*", "/css/*", "/images/*", "/font/StarWarsFont/*", "/sounds/*", "/error/*", "/login*", "/error", "/register", "/register_v2").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -53,6 +54,11 @@ public class PortalAccess extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")
                 .defaultSuccessUrl("/", true)
+                .failureHandler(AppAuthenticationFailureHandler())
+                .failureUrl("/login-error")
+//                .failureUrl("/login")
+//                .failureUrl("/login?error=true")
+//                .failureForwardUrl("/login")
 
                 .and()
                 .logout()
@@ -67,6 +73,11 @@ public class PortalAccess extends WebSecurityConfigurerAdapter {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public AuthenticationFailureHandler AppAuthenticationFailureHandler() {
+        return new AppAuthenticationFailureHandler();
     }
 
 }

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Admin management panel">
+    <meta name="keywords" content="Jedi, StarWars, JediOrder">
+    <meta http-equiv="X-UA-Compatibile" content="IE=edge,chrome=1">
+    <meta name="author" content="Rav the entry level Jedi warrior:)">
+    <link rel="stylesheet" type="text/css" media="all" href="css/styleMain.css">
+    <title>Admin Panel</title>
+</head>
+
+<!--<body onload="playBackgroundMusic()" style="background-image: url('background/background07.png');">-->
+<body>
+
+<script>
+    function playBackgroundMusic() {
+        var backgroundAudio = document.createElement("audio");
+        backgroundAudio.src = '/sounds/Star_Wars_Theme.mp3';
+        backgroundAudio.preload = "auto";
+        backgroundAudio.loop = true;
+        // backgroundAudio.currentTime = 15;
+        backgroundAudio.play();
+    }
+</script>
+
+<header class="background">
+    <ul>
+        <li><a class="current" href="/">ACCOUNTS</a></li>
+        <!--        <li><a href="#">STATISTICS</a></li>-->
+        <form class="logout" method="post" th:action="@{/logout}">
+            <li><input type="submit" value="LOGOUT"/></li>
+        </form>
+    </ul>
+</header>
+
+<br/>
+
+<div style="font-size: x-large; text-align: center; line-height: 1.5;">
+    Great to see you Dear <span th:text="${loggedUserName}" style="color: red">LOGGED_USER_NAME</span> !
+    <br/>Here you can manage the platform's accounts, enjoy
+</div>
+
+<br/><br/><br/>
+
+<!--<ul class="users" th:each="user : ${users}">-->
+<!--    <li th:text="${user.getId()}"></li>-->
+<!--    <li th:text="${user.getUsername()}"></li>-->
+<!--&lt;!&ndash;    <li th:text="${user.getPassword()}"></li>&ndash;&gt;-->
+<!--    <li th:text="${user.getFirstName()}"></li>-->
+<!--    <li th:text="${user.getSecondName()}"></li>-->
+<!--    <li th:text="${user.getAge()}"></li>-->
+<!--    <li th:text="${user.getEmail()}"></li>-->
+<!--    <li th:text="${user.getPhone()}"></li>-->
+<!--    <li th:text="${user.isAdmin()}"></li>-->
+<!--    <li style="clear: both; margin: 0; padding: 0"></li>-->
+<!--</ul>-->
+
+<form>
+    <table class="users">
+        <thead style="background-color: #222222;">
+        <tr>
+            <td>ID</td>
+            <td>Username</td>
+            <td>First<br/>name</td>
+            <td>Second<br/>name</td>
+            <td>Age</td>
+            <td>Email</td>
+            <td>Phone</td>
+            <td>Admin</td>
+            <td>Created at</td>
+            <td>On</td>
+        </tr>
+        </thead>
+
+        <tbody th:each="user : ${users}">
+        <tr>
+            <td th:text="${user.getId()}"></td>
+            <td th:text="${user.getUsername()}"></td>
+            <!--    <td th:text="${user.getPassword()}"></td>-->
+            <td th:text="${user.getFirstName()}"></td>
+            <td th:text="${user.getSecondName()}"></td>
+            <td th:text="${user.getAge()}"></td>
+            <td th:text="${user.getEmail()}"></td>
+            <td th:text="${user.getPhone()}"></td>
+            <td th:text="${user.isAdmin()}"></td>
+            <td th:text="${user.getCreated()}"></td>
+            <!--        <td th:text="${user.isEnabled()}"></td>-->
+<!--            <td><input type="checkbox" th:checked="${user.isEnabled()} ? 'checked' : ''" th:value="${user.isOn()}"/></td>-->
+            <td><input type="checkbox" th:checked=("${user.isEnabled()}") th:value="${user.isOn()}"/></td>
+
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="row">
+        <input type="image" style="filter: grayscale(100%)" th:src="@{images/ICOs/Update.png}" alt="Submit" height="100">
+    </div>
+    <div class="row" style="margin: -30px 0 0 0">Update</div>
+
+</form>
+
+</body>
+
+</html>
