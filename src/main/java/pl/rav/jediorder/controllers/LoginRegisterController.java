@@ -44,7 +44,7 @@ public class LoginRegisterController {
                 "admin@admin.pl",
                 "500-500-500",
                 true);
-        User defaultUser = new User(
+        User defaultUser1 = new User(
                 "User",
                 passwordEncoder.encode("User"),
                 "Standard",
@@ -54,9 +54,22 @@ public class LoginRegisterController {
                 null,
                 false);
 
-        this.userRepo.save(defaultUser);
+        User defaultUser2 = new User(
+                "Test",
+                passwordEncoder.encode("Test"),
+                "Sample",
+                "Enabled",
+                "13",
+                "user2@user.us",
+                null,
+                false);
+
+        defaultUser2.setOn(false);
+
+        this.userRepo.save(defaultUser1);
+        this.userRepo.save(defaultUser2);
         this.userRepo.save(admin);
-        log.error(admin);
+//        log.error(admin);
         log.info("Default user created and saved (login:user / password:user)");
         log.info("Administrator account was created and saved with externally difficult and secret password:)");
 
@@ -86,7 +99,8 @@ public class LoginRegisterController {
             }
         }
         if ("User is disabled".equalsIgnoreCase(errorMessage)) errorMessage = "ERROR: Account is disabled. Contact your Administrator";
-        if ("Bad credentials".equalsIgnoreCase(errorMessage)) errorMessage = "ERROR: Invalid credentials";
+        else if ("Bad credentials".equalsIgnoreCase(errorMessage)) errorMessage = "ERROR: Invalid credentials";
+        else errorMessage = "ERROR: Invalid data";
         model.addAttribute("errorMessage", errorMessage);
         return "login";
     }

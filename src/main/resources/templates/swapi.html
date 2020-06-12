@@ -18,11 +18,14 @@
 <header class="background">
     <ul id="menu">
         <li><a href="/">ABOUT</a></li>
-        <li><a href="#">NEW ORDER</a></li>
+<!--        <li><a href="#">NEW ORDER</a></li>-->
         <li><a href="/newWarrior">NEW WARRIOR</a></li>
         <li><a href="/jediOrder">JEDI ORDER</a></li>
         <li><a href="/sithOrder">SITH ORDER</a></li>
         <li><a class="current" href="swapi">SWAPI</a></li>
+        <form class="logout" method="post" th:action="@{/logout}">
+            <li><input type="submit" value="LOGOUT"/></li>
+        </form>
     </ul>
     <h3>Dear <span th:text="${loggedUserName}" style="color: red">LOGGED_USER_NAME</span>,
         would you like to ask the Star Wars API ? (by Paul Hallett)

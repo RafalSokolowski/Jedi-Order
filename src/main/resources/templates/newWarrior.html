@@ -29,11 +29,14 @@
 <header class="background">
     <ul id="menu">
         <li><a href="/">ABOUT</a></li>
-        <li><a href="#">NEW ORDER</a></li>
+<!--        <li><a href="#">NEW ORDER</a></li>-->
         <li><a class="current" href="/newWarrior">NEW WARRIOR</a></li>
         <li><a href="/jediOrder">JEDI ORDER</a></li>
         <li><a href="/sithOrder">SITH ORDER</a></li>
         <li><a href="swapi">SWAPI</a></li>
+        <form class="logout" method="post" th:action="@{/logout}">
+            <li><input type="submit" value="LOGOUT"/></li>
+        </form>
     </ul>
     <h3>May the creation be with you . . . Dear <span th:text="${loggedUserName}" style="color: red">LOGGED_USER_NAME</span> cook your own warrior</h3>
 </header>
@@ -95,7 +98,7 @@
             <div class="select" style="width: 40%">
                 <h3>Order:</h3>
                 <div class="box" th:each="order : ${orders}">
-                    <input name="order" type="radio" th:value="${order.name()}">
+                    <input name="orderName" type="radio" th:value="${order.name()}">
                     <span th:text="${order.getDesc()}">ORDER</span><br/>
                 </div>
             </div>

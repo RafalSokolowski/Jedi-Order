@@ -60,7 +60,7 @@
 <!--    <li style="clear: both; margin: 0; padding: 0"></li>-->
 <!--</ul>-->
 
-<form th:action="@{/adminPanel}" method="post">
+<form th:action="@{/adminPanel}" th:object="${users}" method="post">
     <table class="users">
         <thead style="background-color: #222222;">
         <tr>
@@ -88,10 +88,11 @@
             <td th:text="${user.getEmail()}"></td>
             <td th:text="${user.getPhone()}"></td>
             <td th:text="${user.isAdmin()}"></td>
-            <td th:text="${user.getCreated()}"></td>
+            <td style="font-size: medium" th:text="${user.getCreated()}"></td>
             <!--        <td th:text="${user.isEnabled()}"></td>-->
 <!--            <td><input type="checkbox" th:checked="${user.isEnabled()} ? 'checked' : ''" th:value="${user.isOn()}"/></td>-->
 <!--            <td><input name="isOn" type="checkbox" th:checked="${user.isEnabled()}" th:value="${user.isOn()}"/></td>-->
+<!--            <td><input name="isOn" type="checkbox" th:checked="${user.isEnabled()}" th:value="${users.get(user.getId()-1).isOn()}"/></td>-->
             <td><input name="isOn" type="checkbox" th:checked="${user.isEnabled()}" th:value="${user.isOn()}"/></td>
 
         </tr>

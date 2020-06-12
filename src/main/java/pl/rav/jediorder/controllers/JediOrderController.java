@@ -71,6 +71,7 @@ public class JediOrderController {
 
     @GetMapping("/adminPanel")
     public String toAdminPanel(Model model) {
+//        userRepo = this.userRepo;
         userRepo.findAll().forEach(System.out::println);
         model.addAttribute("loggedUserName", user.getUsername());
         model.addAttribute("users", userRepo.findAll());
@@ -80,13 +81,13 @@ public class JediOrderController {
     }
 
     @PostMapping("/adminPanel")
-    public String update(Model model) {
-        model.addAttribute("loggedUserName", user.getUsername());
-        model.addAttribute("users", userRepo.findAll());
-
+    public String update(@ModelAttribute UserRepo userRepo, Model model) {
+        System.out.println(userRepo);
+//        model.addAttribute("loggedUserName", user.getUsername());
+//        model.addAttribute("users", this.userRepo.findAll());
 //        log.info("What has changed: " + userRepo.findAll());
 //        return "redirect:/adminPanel";
-        return "adminPanel";
+        return "redirect:/adminPanel";
     }
 
     @GetMapping("/jediOrder")
@@ -196,6 +197,7 @@ public class JediOrderController {
         model.addAttribute("species", Species.values());
         model.addAttribute("masters", Master.values());
         model.addAttribute("orders", OrderName.values());
+
         model.addAttribute("warrior", new Warrior());
 
         model.addAttribute("loggedUserName", user.getUsername());
